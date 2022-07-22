@@ -14,8 +14,8 @@
 
 <script>
 
-import MapComponent from "@/components/MapComponent";
-import NavigationComponent from "@/components/NavigationComponent";
+import MapComponent from "@/components/Map/MapComponent";
+import NavigationComponent from "@/components/Navigation/NavigationComponent";
 import ListOrMapComponent from "@/components/ListOrMapComponent";
 
 export default {

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import DetailComponent from "@/components/DetailComponent";
+import DetailComponent from "@/components/Navigation/DetailComponent";
 
 export default {
   name: 'navigation-component',
