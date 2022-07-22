@@ -41,6 +41,11 @@
     background-image: url("~@/assets/images/icons/toggled-garbage.svg");
   }
 
-}
+  &-search {
+    @extend .icon;
+    width: 20px;
+    height: 20px;
+    background-image: url("~@/assets/images/icons/map-search.svg");
+  }
 
-]]
+}

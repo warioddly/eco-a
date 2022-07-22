@@ -1,6 +1,14 @@
 <template>
   <div class="list">
-      list component
+    <div class="zoom">
+         <div class="plus" id='zoom-in'></div>
+         <div class="minus" id='zoom-out'></div>
+    </div>
+
+    <div class="search">
+      <div class="icon-search"></div>
+      <input type="text" class="search-input" id='search' placeholder="Найти по адресу" />
+    </div>
   </div>
 </template>
 
@@ -11,4 +19,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 </style>
