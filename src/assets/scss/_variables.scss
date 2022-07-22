@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+// FONTS
+
+$fontManrope: 'Manrope', sans-serif;
+$fontStandartWeight: 400;
+$fontStyle: normal;
+
+
+// COLORS
+
+$whiteColor: #FFFFFF;
+$PurpleColor: #591ED6;
+$secondaryPurpleColor: #ECEAFC;
+$blackColor: #000000;
+$secondaryBlackColor: #888B8D;
+$blueColor: #1B8EE2;
+$secondaryBlueColor: #F2FAFF;
+
+
+// BLOCK styles
+
+$borderRadius-70: 70px;
+$borderRadius-22: 22px;
+$borderRadiusTop-16: 16px 16px 0px 0px;
+$borderRadiusBottom-16: 0px 0px 16px 16px;
+$borderRadiusTop-20: 20px 20px 0px 0px;
+$borderRadiusBottom-20: 0px 0px 20px 20px;
+$boxShadow: 0px 0px 4px rgba(0, 0, 0, 0.25);

@@ -1,0 +1,79 @@
+@import "variables";
+
+*{
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#app{
+  height: 100%;
+  font-family: $fontManrope;
+  text-decoration: none;
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    header{
+      .list-or-map{
+        display: flex;
+        justify-content: space-around;
+
+        .header-link {
+          font-weight: $fontStandartWeight;
+          font-style: $fontStyle;
+          font-size: 14px;
+          text-decoration: none;
+          padding: 10px;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          border-bottom: 2px solid $blackColor;
+
+          &.router-link-active {
+            color: $PurpleColor;
+            border-bottom: 2px solid $PurpleColor;
+          }
+        }
+      }
+    }
+
+    main {
+      flex: 1 0 auto;
+
+      .map{
+        height: 100%;
+
+        .ymap{
+          display: flex;
+          flex: 1 0 auto;
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+
+    nav {
+      background-color: $whiteColor;
+
+      .navigation{
+        padding: 20px;
+      }
+    }
+  }
+}
+
+

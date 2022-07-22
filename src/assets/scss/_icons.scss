@@ -1,0 +1,46 @@
+.icon {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  //
+  //&-logo {
+  //  @extend .icon;
+  //  width: 27px;
+  //  height: 36px;
+  //  background-image: url("src/assets/images/shield.png");
+  //}
+
+  &-trash {
+    @extend .icon;
+    width: 20px;
+    height: 20px;
+    background-image: url("~@/assets/images/icons/trash.svg");
+  }
+
+  &-toggled-trash {
+    @extend .icon;
+    width: 28px;
+    height: 28px;
+    background-image: url("~@/assets/images/icons/toggled-trash.svg");
+  }
+
+  &-garbage {
+    @extend .icon;
+    width: 28px;
+    height: 28px;
+    background-image: url("~@/assets/images/icons/garbage.svg");
+  }
+
+  &-toggled-garbage {
+    @extend .icon;
+    width: 28px;
+    height: 28px;
+    background-image: url("~@/assets/images/icons/toggled-garbage.svg");
+  }
+
+}
+
+]]
