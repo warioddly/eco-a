@@ -1,6 +1,12 @@
 <template>
-  <div class="detail">
-     <h5>detail work!</h5>
+  <div v-touch:swipe="onSwipeItem(item)" class="detail">
+    <div class="line"></div>
+    awdaw
+    dawda
+    wdawdawdawdawd
+    awdaw
+    dawd
+    awdawdawd
   </div>
 </template>
 
@@ -8,6 +14,14 @@
 
 export default {
   name: 'detail-component',
+
+  methods: {
+    onSwipeItem(item) {
+      return function (direction) {
+        console.log("Swiped item in direction ", direction);
+      };
+    },
+  }
 }
 </script>
 

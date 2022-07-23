@@ -5,6 +5,7 @@
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center;
   //
   //&-logo {
   //  @extend .icon;
@@ -27,18 +28,18 @@
     background-image: url("~@/assets/images/icons/toggled-trash.svg");
   }
 
-  &-garbage {
+  &-waste {
     @extend .icon;
     width: 28px;
     height: 28px;
-    background-image: url("~@/assets/images/icons/garbage.svg");
+    background-image: url("~@/assets/images/icons/waste.svg");
   }
 
-  &-toggled-garbage {
+  &-toggled-waste {
     @extend .icon;
     width: 28px;
     height: 28px;
-    background-image: url("~@/assets/images/icons/toggled-garbage.svg");
+    background-image: url("~@/assets/images/icons/toggled-waste.svg");
   }
 
   &-search {
@@ -46,6 +47,36 @@
     width: 20px;
     height: 20px;
     background-image: url("~@/assets/images/icons/map-search.svg");
+  }
+
+  &-nav-calendar-check {
+    @extend .icon;
+    height: 24px;
+    background-image: url("~@/assets/images/icons/nav-calendar-check.svg");
+  }
+
+  &-nav-waste {
+    @extend .icon;
+    height: 24px;
+    background-image: url("~@/assets/images/icons/nav-waste.svg");
+  }
+
+  &-nav-marker-pin {
+    @extend .icon;
+    height: 24px;
+    background-image: url("~@/assets/images/icons/nav-marker-pin.svg");
+  }
+
+  &-nav-menu {
+    @extend .icon;
+    height: 24px;
+    background-image: url("~@/assets/images/icons/nav-menu.svg");
+  }
+
+  &-nav-redeem {
+    @extend .icon;
+    height: 24px;
+    background-image: url("~@/assets/images/icons/nav-redeem.svg");
   }
 
 }

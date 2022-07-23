@@ -85,17 +85,17 @@ export default {
             contentOffset: [-22, -55],
           },
         },
-        garbage: {
-          garbage: {
+        waste: {
+          waste: {
             layout: 'default#image', // 'default#imageWithContent' для использования с контентом
-            imageHref: require('../../assets/images/icons/garbage.svg'), // адрес изображения или data:image/svg+xml;base64
+            imageHref: require('../../assets/images/icons/waste.svg'), // адрес изображения или data:image/svg+xml;base64
             imageSize: [25, 25], // размер иконки в px
             imageOffset: [-22, -55], // смещение иконки в px,
             contentOffset: [-22, -55], // смещение контента в px,
           },
           toggled: {
             layout: 'default#image',
-            imageHref: require('../../assets/images/icons/toggled-garbage.svg'),
+            imageHref: require('../../assets/images/icons/toggled-waste.svg'),
             imageSize: [28, 28],
             imageOffset: [-22, -55],
             contentOffset: [-22, -55],
@@ -145,7 +145,7 @@ export default {
 
     getMarkerInformation(event) {
       const marker = event.get('target');
-      this.setMarkerIcon(marker, this.icons.garbage.garbage['imageHref']);
+      this.setMarkerIcon(marker, this.icons.waste.waste['imageHref']);
     },
 
     setMarkerIcon(marker, icon) {
@@ -191,7 +191,7 @@ export default {
           42.8752093077727,
           74.60283279418944,
         ],
-        icon: this.icons.garbage.garbage
+        icon: this.icons.waste.waste
       },
       {
         id: 4,
@@ -199,7 +199,7 @@ export default {
           42.873070672909556,
           74.60403442382812,
         ],
-        icon: this.icons.garbage.garbage
+        icon: this.icons.waste.waste
       },
       {
         id: 5,
@@ -215,7 +215,7 @@ export default {
           42.873070672909556,
           74.60403442382812,
         ],
-        icon: this.icons.garbage.garbage
+        icon: this.icons.waste.waste
       },
       {
         id: 7,
@@ -223,7 +223,7 @@ export default {
           42.87168681085845,
           74.61296081542969,
         ],
-        icon: this.icons.garbage.garbage
+        icon: this.icons.waste.waste
       },
       {
         id: 8,
@@ -239,7 +239,7 @@ export default {
           42.872567453935716,
           74.60746765136719,
         ],
-        icon: this.icons.garbage.garbage
+        icon: this.icons.waste.waste
       },
       {
         id: 10,
@@ -295,7 +295,7 @@ export default {
           42.88829110747604,
           74.6242904663086,
         ],
-        icon: this.icons.garbage.garbage
+        icon: this.icons.waste.waste
       }
       ,      {
         id: 5,
@@ -413,7 +413,7 @@ export default {
           42.85750043579542,
           74.59592342376708,
         ],
-        icon: this.icons.garbage.garbage
+        icon: this.icons.waste.waste
       },
       {
         id: 5,
@@ -437,7 +437,7 @@ export default {
           42.860017103808495,
           74.599871635437,
         ],
-        icon: this.icons.garbage.garbage
+        icon: this.icons.waste.waste
       },
       {
         id: 5,
@@ -469,7 +469,7 @@ export default {
           42.85554994753361,
           74.60214614868164,
         ],
-        icon: this.icons.garbage.garbage
+        icon: this.icons.waste.waste
       },
       {
         id: 5,
@@ -485,7 +485,7 @@ export default {
           42.863257162826166,
           74.59819793701172,
         ],
-        icon: this.icons.garbage.garbage
+        icon: this.icons.waste.waste
       },
       {
         id: 5,
@@ -509,7 +509,7 @@ export default {
           42.863257162826166,
           74.59819793701172,
         ],
-        icon: this.icons.garbage.garbage
+        icon: this.icons.waste.waste
       },
       {
         id: 5,
@@ -517,7 +517,7 @@ export default {
           42.863257162826166,
           74.59819793701172,
         ],
-        icon: this.icons.garbage.garbage
+        icon: this.icons.waste.waste
       },
       {
         id: 5,
@@ -525,7 +525,7 @@ export default {
           42.863257162826166,
           74.59819793701172,
         ],
-        icon: this.icons.garbage.garbage
+        icon: this.icons.waste.waste
       },
       {
         id: 5,

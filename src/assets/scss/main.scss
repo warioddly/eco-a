@@ -22,6 +22,78 @@ html, body {
   font-family: $fontManrope;
   text-decoration: none;
 
+  .list-blocks{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+
+    .scrollable-block{
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      overflow-y: auto; /* Make the child scroll */
+      width: 100%;
+    }
+
+    .list{
+      padding: 15px;
+      border-bottom: 1px solid #EDEDED;
+      background-color: $whiteColor;
+
+      .info{
+        display: flex;
+        justify-content: space-between;
+        font-family: $fontManrope;
+        font-style: $fontStyle;
+
+        .address{
+          font-weight: 600;
+          font-size: 14px;
+        }
+
+        .range-block{
+          padding: 4px 8px;
+          background-color: $secondaryBlueColor;
+          border-radius: 7px;
+          text-align: center;
+
+          .range{
+            font-weight: 700;
+            font-size: 13px;
+            color: $blueColor;
+          }
+
+          .measure{
+            font-weight: 400;
+            font-size: 10px;
+            color: $blueColor;
+          }
+        }
+      }
+
+      .container-type{
+        display: flex;
+        align-items: center;
+        font-family: $fontManrope;
+        font-style: $fontStyle;
+
+        .type{
+          font-size: 11px;
+          line-height: 15px;
+          letter-spacing: 0.02em;
+          color: $secondaryBlackColor;
+          margin-left: 8px;
+        }
+      }
+
+      &:active, &:hover{
+        background-color: #efefef;
+      }
+    }
+  }
+
   .wrapper {
     display: flex;
     flex-direction: column;
@@ -44,8 +116,8 @@ html, body {
           border-bottom: 2px solid $blackColor;
 
           &.router-link-active {
-            color: $PurpleColor;
-            border-bottom: 2px solid $PurpleColor;
+            color: $purpleColor;
+            border-bottom: 2px solid $purpleColor;
           }
         }
       }
@@ -57,11 +129,18 @@ html, body {
       .map{
         height: 100%;
 
-        .ymap{
-          display: flex;
-          flex: 1 0 auto;
-          height: 100%;
-          width: 100%;
+        .map-preloading{
+          position: absolute;
+          z-index: 111;
+          fill: $purpleColor;
+          width: 60px;
+          height: 60px;
+
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          margin: auto auto;
         }
 
         .location-button{
@@ -72,11 +151,11 @@ html, body {
           background-image: url("~@/assets/images/icons/location.svg");
           background-repeat: no-repeat;
           background-position: center;
-          filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
+          box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
         }
 
         .zoom{
-          filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
+          box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
           border-radius: 70px;
 
           .plus{
@@ -101,40 +180,198 @@ html, body {
           }
         }
 
-        .search{
-          width: 330px;
-          height: 40px;
-          background: #FFFFFF;
-          box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
-          border-radius: 70px;
+        .search-controllers{
+          position: absolute;
+          top: 62px;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          z-index: 11;
           display: flex;
-          padding: 10px;
+          max-width: 410px;
+          padding: 0 15px;
 
-          .icon-search{
-            margin-right: 5px;
+          .search{
+            width: 335px;
+            height: 40px;
+            background: #FFFFFF;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+            border-radius: 70px;
+            display: flex;
+            padding: 10px;
+            margin-right: 10px;
+
+            animation-name: boxToShadow;
+            animation-duration: 1s;
+
+            .icon-search{
+              margin-right: 5px;
+            }
+
+            .search-input{
+              width: 100%;
+              outline: 0;
+              border:none;
+
+              &:focus{
+                border: none;
+                outline: 0;
+              }
+            }
           }
 
-          .search-input{
-            width: 100%;
-            outline: 0;
-            border:none;
+          .filter{
+            min-width: 40px;
+            height: 40px;
+            background-color: $whiteColor;
+            border-radius: $borderRadius-70;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+            background-image: url("~@/assets/images/icons/filter-funnel.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            animation-name: boxToShadow;
+            animation-duration: 1s;
 
-            &:focus{
-              border: none;
-              outline: 0;
+          }
+
+          @keyframes boxToShadow{
+            from{
+              box-shadow: 0 0 4px rgba(0, 0, 0, 0);
+            }
+            to{
+              box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
             }
           }
         }
+      }
 
+      #list{
+        .search-controllers{
+          position: sticky;
+          top: 0;
+          display: flex;
+          justify-content: center;
+          padding: 20px 15px;
+          background-color: $whiteColor;
+
+          .search{
+            width: 330px;
+            height: 42px;
+            background: #FFFFFF;
+            border: 1px solid #E2E4E5;
+            border-radius: 70px;
+            display: flex;
+            padding: 10px;
+            margin-right: 10px;
+            animation-name: boxToTransparent;
+            animation-duration: .3s;
+
+            .icon-search{
+              margin-right: 5px;
+            }
+
+            .search-input{
+              width: 100%;
+              outline: 0;
+              border:none;
+
+              &:focus{
+                border: none;
+                outline: 0;
+              }
+            }
+          }
+
+          .filter{
+            min-width: 40px;
+            max-width: 40px;
+            height: 40px;
+            background-color: $whiteColor;
+            border-radius: $borderRadius-70;
+            border: 1px solid #E2E4E5;
+            background-image: url("~@/assets/images/icons/filter-funnel.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            animation-name: boxToTransparent;
+            animation-duration: .3s;
+
+          }
+
+          @keyframes boxToTransparent{
+            from{
+              box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+            }
+            to{
+              box-shadow: 0 0 4px rgba(0, 0, 0, 0);
+            }
+          }
+        }
       }
     }
 
     nav {
       background-color: $whiteColor;
+      box-shadow: 0px -2px 27px -11px rgba(0, 0, 0, 0.25);
+      position: sticky;
+      bottom: 0;
+      z-index: 1;
 
       .navigation{
-        padding: 20px;
+        padding: 12px 14px 3px;
+        box-shadow: 0px -2px 27px -11px rgba(0, 0, 0, 0.25);
+
+        .nav-items{
+          display: flex;
+          justify-content: center;
+          list-style: none;
+          margin: 0;
+
+          .item{
+            width: 52px;
+            margin: 0 9px;
+
+            .nav-item-link{
+              display: inherit;
+              color: $secondaryBlackColor;
+              font-family: $fontManrope;
+              font-style: $fontStyle;
+              font-weight: $fontStandartWeight;
+              font-size: 9px;
+              text-decoration: none;
+
+              .ico{
+                margin-bottom: 2px;
+              }
+
+              p{
+                text-align: center;
+              }
+
+              &.router-link-active{
+                color: $purpleColor;
+
+                .ico{
+                  filter: brightness(0) saturate(100%) invert(10%) sepia(100%) saturate(5643%) hue-rotate(269deg) brightness(98%) contrast(98%);
+                }
+              }
+            }
+          }
+        }
       }
+
+    }
+  }
+
+  .detail{
+    padding: 7px 0 7px 0;
+    background-color: $whiteColor;
+
+    .line{
+      background-color: $blackColor;
+      width: 152px;
+      height: 4px;
+      border-radius: 4px;
+      margin: 0 auto;
     }
   }
 }
