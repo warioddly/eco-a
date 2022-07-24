@@ -21,25 +21,25 @@
     background-image: url("~@/assets/images/icons/trash.svg");
   }
 
-  &-toggled-trash {
+  &-trash-active {
     @extend .icon;
     width: 28px;
     height: 28px;
-    background-image: url("~@/assets/images/icons/toggled-trash.svg");
+    background-image: url("~@/assets/images/icons/trash-active.svg");
   }
 
   &-waste {
     @extend .icon;
-    width: 28px;
-    height: 28px;
+    width: 20px;
+    height: 20px;
     background-image: url("~@/assets/images/icons/waste.svg");
   }
 
-  &-toggled-waste {
+  &-waste-active {
     @extend .icon;
     width: 28px;
     height: 28px;
-    background-image: url("~@/assets/images/icons/toggled-waste.svg");
+    background-image: url("~@/assets/images/icons/waste-active.svg");
   }
 
   &-search {
@@ -69,6 +69,8 @@
 
   &-nav-menu {
     @extend .icon;
+    margin: 0 auto;
+    width: 24px;
     height: 24px;
     background-image: url("~@/assets/images/icons/nav-menu.svg");
   }
@@ -77,6 +79,13 @@
     @extend .icon;
     height: 24px;
     background-image: url("~@/assets/images/icons/nav-redeem.svg");
+  }
+
+  &-route {
+    @extend .icon;
+    width: 35px;
+    height: 34px;
+    background-image: url("~@/assets/images/icons/route.svg");
   }
 
 }

@@ -44,6 +44,7 @@ export default {
         version: '2.1'
       },
       location: [],
+      locationCircle: {},
       coords: [],
       mapInitialized: true,
     }
@@ -72,11 +73,12 @@ export default {
 
     createMap(state) {
       this.map = new ymaps.Map('map', state);
-      this.createControllers();
       this.markerIntitialize();
+      this.getLocation();
 
       setTimeout(() => {
         this.mapInitialized = false;
+        this.createControllers();
       }, 1500)
     },
 
@@ -135,10 +137,10 @@ export default {
       // LocationController
 
       var geolocationControl = new ymaps.control.GeolocationControl({
-        data: {
-          image: require("@/assets/images/icons/user.svg"),
-        },
         options: {
+          layout: ymaps.templateLayoutFactory.createClass(
+              "<div class=\"location-button\"></div>")
+          ,
           noPlacemark: true,
           position: {
             right: 15,
@@ -155,83 +157,69 @@ export default {
     },
 
     getLocation(){
-
-      // ymaps.geolocation.get().then((res) => {
-      //   this.location = res.geoObjects.position;
-      //   this.coords = res.geoObjects.position;
-      //
-      //   let circle = new ymaps.Circle([this.location, 100], {
-      //     hintContent: "Move me"
-      //   }, {
-      //     geodesic: true,
-      //   });
-      //
-      //   this.map.geoObjects.add(circle);
-      // });
-
-      ymaps.geolocation.get({
-        provider: 'yandex',
-        mapStateAutoApply: true
-      }).then((res) => {
+      ymaps.geolocation.get({provider: 'auto', mapStateAutoApply: true}
+      ).then((res) => {
         this.location = res.geoObjects.position;
         this.coords = res.geoObjects.position;
 
-        console.log(res.geoObjects.options);
+        if(this.mapInitialized) {
+            // Creating user location icon
 
-        res.geoObjects.options.set('preset', require('@/assets/images/icons/user.svg'));
-        res.geoObjects.get(0).properties.set({
-          balloonContentBody: 'Мое местоположение'
-        });
-        this.map.geoObjects.add(res.geoObjects);
+          res.geoObjects.options.set('iconImageHref', require('@/assets/images/icons/user.svg'));
+          res.geoObjects.get(0).properties.set({
+            balloonContentBody: 'Мое местоположение'
+          });
+
+
+          this.map.geoObjects.add(res.geoObjects);
+
+            // Creating a circle.
+          var myCircle = new ymaps.Circle([this.location, 120], {
+
+              balloonContent: "Radius of the circle: 1km",
+              hintContent: "Move me"
+            }, {
+              draggable: false,
+              fillColor: "#26262614",
+              strokeColor: "#99006600",
+              strokeOpacity: 0,
+              strokeWidth: 5
+            });
+
+            // Adding the circle to the map.
+            this.map.geoObjects.add(myCircle);
+
+            this.locationCircle = myCircle
+          }
+        else{
+          myCircle.geometry.setCoordinates(this.location)
+         }
       });
     },
 
     async markerIntitialize() {
-      var coords = [
-        [56.023, 36.988],
-        [56.025, 36.981],
-        [56.020, 36.981],
-        [56.021, 36.983],
-        [56.027, 36.987]
-      ];
-
       $.ajax({
         url: '/data.json'
       }).done((data) => {
 
-        var myCollection = new ymaps.GeoObjectCollection();
+        var trashCollection = new ymaps.GeoObjectCollection({
+          hintContent: 'A custom placemark icon',
+          balloonContent: 'This is a pretty placemark'
+        }, {
+          iconLayout: 'default#image',
+          iconImageHref: require('@/assets/images/icons/trash.svg'),
+          iconImageSize: [30, 42],
+          iconImageOffset: [-5, -38]
+        });
 
         for (let i = 0; i < data.length; i++) {
-          myCollection.add(new ymaps.Placemark(data[i].coords));
+          trashCollection.add(new ymaps.Placemark(data[i].coords));
 
         }
 
-        this.map.geoObjects.add(myCollection);
+        this.map.geoObjects.add(trashCollection);
 
-        let yellowCollection = new ymaps.GeoObjectCollection(null, {
-          preset: 'islands#yellowIcon'
-        });
-        let blueCollection = new ymaps.GeoObjectCollection(null, {
-          preset: 'islands#blueIcon'
-        });
-
-        let yellowCoords = [[55.73, 37.75], [55.81, 37.75]]
-        let blueCoords = [[55.73, 37.65], [55.81, 37.65]];
-
-        for (let i = 0, l = yellowCoords.length; i < l; i++) {
-          yellowCollection.add(new ymaps.Placemark(yellowCoords[i]));
-        }
-
-        for (let i = 0, l = blueCoords.length; i < l; i++) {
-          blueCollection.add(new ymaps.Placemark(blueCoords[i]));
-        }
-
-        this.map.geoObjects.add(yellowCollection).add(blueCollection);
-
-        yellowCollection.events.add('click', function () { alert('Кликнули по желтой метке') });
-        blueCollection.events.add('click', function () { alert('Кликнули по синей метке') });
-
-        blueCollection.options.set('iconImageHref', require('../../assets/images/icons/toggled-waste.svg'));
+        trashCollection.events.add('click', () => console.log(111));
 
       });
     }

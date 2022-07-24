@@ -45,53 +45,92 @@ html, body {
       .info{
         display: flex;
         justify-content: space-between;
-        font-family: $fontManrope;
-        font-style: $fontStyle;
 
-        .address{
-          font-weight: 600;
-          font-size: 14px;
-        }
-
-        .range-block{
-          padding: 4px 8px;
-          background-color: $secondaryBlueColor;
-          border-radius: 7px;
-          text-align: center;
-
-          .range{
-            font-weight: 700;
-            font-size: 13px;
-            color: $blueColor;
-          }
-
-          .measure{
-            font-weight: 400;
-            font-size: 10px;
-            color: $blueColor;
-          }
-        }
       }
 
-      .container-type{
-        display: flex;
-        align-items: center;
-        font-family: $fontManrope;
-        font-style: $fontStyle;
-
-        .type{
-          font-size: 11px;
-          line-height: 15px;
-          letter-spacing: 0.02em;
-          color: $secondaryBlackColor;
-          margin-left: 8px;
-        }
-      }
 
       &:active, &:hover{
-        background-color: #efefef;
+        background-color: $hoverGreyColor;
       }
     }
+
+
+  }
+
+  .information{
+    font-family: $fontManrope;
+    font-style: $fontStyle;
+
+    .address{
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .range-block{
+      padding: 4px 8px;
+      background-color: $secondaryBlueColor;
+      border-radius: 7px;
+      text-align: center;
+
+      .range{
+        font-weight: 700;
+        font-size: 13px;
+        color: $blueColor;
+      }
+
+      .measure{
+        font-weight: 400;
+        font-size: 10px;
+        color: $blueColor;
+      }
+    }
+  }
+
+  .container-type{
+    display: flex;
+    align-items: center;
+    font-family: $fontManrope;
+    font-style: $fontStyle;
+
+    .type{
+      font-size: 11px;
+      line-height: 15px;
+      letter-spacing: 0.02em;
+      color: $secondaryBlackColor;
+      margin-left: 8px;
+    }
+  }
+
+  .text-title{
+    font-family: $fontManrope;
+    font-style: $fontStyle;
+    color: $blackColor;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .text-secondary{
+    font-family: $fontManrope;
+    font-style: $fontStyle;
+    color: $blackColor;
+    font-weight: 400;
+    font-size: 12px;
+  }
+
+  .btn{
+    max-width: 330px;
+    margin: 0 auto;
+    font-family: $fontManrope;
+    font-style: $fontStyle;
+    font-size: 13px;
+    background-color: $purpleColor;
+    border-radius: $borderRadius-22;
+    height: 44px;
+    color: $whiteColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .wrapper {
@@ -152,11 +191,20 @@ html, body {
           background-repeat: no-repeat;
           background-position: center;
           box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+          transition: .2s;
+          animation-name: boxToShadow;
+          animation-duration: 1s;
+
+          &:active{
+            background-color: $hoverGreyColor;
+          }
         }
 
         .zoom{
           box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
           border-radius: 70px;
+          animation-name: boxToShadow;
+          animation-duration: 1s;
 
           .plus{
             width: 40px;
@@ -167,6 +215,11 @@ html, body {
             background-repeat: no-repeat;
             background-position: center;
             border-bottom: 1px solid #F5F5F5;
+            transition: .2s;
+
+            &:active{
+              background-color: $hoverGreyColor;
+            }
           }
 
           .minus{
@@ -177,6 +230,12 @@ html, body {
             background-image: url("~@/assets/images/icons/minus.svg");
             background-repeat: no-repeat;
             background-position: center;
+
+            transition: .2s;
+
+            &:active{
+              background-color: $hoverGreyColor;
+            }
           }
         }
 
@@ -231,18 +290,25 @@ html, body {
             background-position: center;
             animation-name: boxToShadow;
             animation-duration: 1s;
+            transition: .2s;
+
+            &:active{
+              background-color: $hoverGreyColor;
+            }
 
           }
 
-          @keyframes boxToShadow{
-            from{
-              box-shadow: 0 0 4px rgba(0, 0, 0, 0);
-            }
-            to{
-              box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
-            }
+        }
+
+        @keyframes boxToShadow{
+          from{
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0);
+          }
+          to{
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
           }
         }
+
       }
 
       #list{
@@ -294,6 +360,12 @@ html, body {
             background-position: center;
             animation-name: boxToTransparent;
             animation-duration: .3s;
+
+            transition: .2s;
+
+            &:active{
+              background-color: $hoverGreyColor;
+            }
 
           }
 
@@ -358,20 +430,95 @@ html, body {
           }
         }
       }
-
     }
   }
 
-  .detail{
-    padding: 7px 0 7px 0;
-    background-color: $whiteColor;
+  .line{
+    background-color: $blackColor;
+    width: 152px;
+    height: 4px;
+    border-radius: 4px;
+    margin: 0 auto;
+  }
 
-    .line{
-      background-color: $blackColor;
-      width: 152px;
-      height: 4px;
-      border-radius: 4px;
-      margin: 0 auto;
+  .bottom-line{
+    padding: 9px 0 3px;
+  }
+
+  .detail{
+    padding: 9px 0 7px 0;
+    background-color: $whiteColor;
+    box-shadow: 0px -2px 27px -11px rgba(0, 0, 0, 0.25);
+    border-radius: 16px 16px 0 0;
+    position: fixed;
+    bottom: -412px;
+    width: 100%;
+    transition: .2s;
+
+    &.active{
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    #detail-card{
+      font-family: $fontManrope;
+      font-style: $fontStyle;
+
+      .info{
+        border-bottom: 1px solid #E2E4E5;
+        padding: 17px 15px 16px;
+
+      }
+
+      .card-info{
+        display: flex;
+        justify-content: space-between;
+        height: 44px;
+
+        .range-block{
+          display: flex;
+
+          .range{
+            font-weight: 600;
+            font-size: 16px;
+            color: $blueColor;
+          }
+        }
+      }
+
+      .type{
+        margin-left: 0;
+      }
+
+      .product-type-items{
+        display: inline-flex;
+        flex-wrap: wrap;
+
+        .types{
+          width: 135px;
+          margin-left: 15px;
+
+          &::marker{
+            color: $secondaryBlackColor;
+          }
+
+        }
+      }
+
+      .contacts{
+        .owner{
+          margin-bottom: 16px;
+        }
+        .contact{
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+
+      .build-route{
+        padding: 16px 15px 9px;
+      }
     }
   }
 }

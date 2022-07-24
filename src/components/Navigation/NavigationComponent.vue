@@ -32,17 +32,32 @@
         </router-link>
       </li>
     </ul>
+    <div class="bottom-line" v-touch:swipe="onSwipeUp()">
+      <div class="line"></div>
+    </div>
   </div>
   <detail-component />
 </template>
 
 <script>
 import DetailComponent from "@/components/Navigation/DetailComponent";
+import $ from 'jquery'
 
 export default {
   name: 'navigation-component',
   components: {
     DetailComponent
+  },
+
+  methods: {
+    onSwipeUp() {
+      return function (direction) {
+        if(direction === 'top' || direction === 'right' || direction === 'left'){
+          console.log(direction);
+          $("#detail").addClass('active')
+        }
+      };
+    },
   }
 }
 </script>

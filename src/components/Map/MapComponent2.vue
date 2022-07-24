@@ -77,9 +77,9 @@ export default {
             imageOffset: [-22, -55], // смещение иконки в px,
             contentOffset: [-22, -55], // смещение контента в px,
           },
-          toggled: {
+          active: {
             layout: 'default#image',
-            imageHref: require('../../assets/images/icons/toggled-trash.svg'),
+            imageHref: require('../../assets/images/icons/trash-active.svg'),
             imageSize: [28, 28],
             imageOffset: [-22, -55],
             contentOffset: [-22, -55],
@@ -93,9 +93,9 @@ export default {
             imageOffset: [-22, -55], // смещение иконки в px,
             contentOffset: [-22, -55], // смещение контента в px,
           },
-          toggled: {
+          active: {
             layout: 'default#image',
-            imageHref: require('../../assets/images/icons/toggled-waste.svg'),
+            imageHref: require('../../assets/images/icons/waste-active.svg'),
             imageSize: [28, 28],
             imageOffset: [-22, -55],
             contentOffset: [-22, -55],
@@ -183,7 +183,7 @@ export default {
           42.873951296240556,
           74.61038589477539,
         ],
-        icon: this.icons.trash.toggled
+        icon: this.icons.trash.active
       },
       {
         id: 3,
