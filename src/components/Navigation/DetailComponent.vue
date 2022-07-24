@@ -106,11 +106,6 @@ export default {
 
       this.map.geoObjects.add(multiRoute);
 
-
-
-
-
-
     },
   }
 }
