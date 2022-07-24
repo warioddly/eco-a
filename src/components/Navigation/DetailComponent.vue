@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="build-route">
-        <div class="btn build-route-btn"><p>Проложить маршрут</p></div>
+        <div class="btn build-route-btn" @click="buildRoute()"><p>Проложить маршрут</p></div>
       </div>
     </div>
   </div>
@@ -64,6 +64,53 @@ export default {
           $("#detail").removeClass('active')
         }
       };
+    },
+
+    buildRoute(){
+        console.log('qqqqqqq');
+
+      var pointA = [55.749, 37.524],
+          pointB = "Moscow, Red square",
+          /**
+           * Creating a multiroute.
+           * @see https://api.yandex.com/maps/doc/jsapi/2.1/ref/reference/multiRouter.MultiRoute.xml
+           */
+          multiRoute = new ymaps.multiRouter.MultiRoute({
+            referencePoints: [
+              pointA,
+              pointB
+            ],
+            params: {
+              //The routing type - pedestrian.
+              routingMode: 'pedestrian'
+            }
+          }, {
+            // Automatically set the map boundaries so the entire route is visible.
+            boundsAutoApply: true
+          });
+
+      // Creating a button.
+      var changePointsButton = new ymaps.control.Button({
+        data: {content: "Swap points A and B"},
+        options: {selectOnClick: true}
+      });
+
+      // Declaring handlers for the button.
+      changePointsButton.events.add('select', function () {
+        multiRoute.model.setReferencePoints([pointB, pointA]);
+      });
+
+      changePointsButton.events.add('deselect', function () {
+        multiRoute.model.setReferencePoints([pointA, pointB]);
+      });
+
+      this.map.geoObjects.add(multiRoute);
+
+
+
+
+
+
     },
   }
 }
