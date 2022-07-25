@@ -241,7 +241,7 @@ html, body {
 
         .search-controllers{
           position: absolute;
-          top: 62px;
+          top: 63px;
           left: 0;
           right: 0;
           margin: 0 auto;
@@ -451,9 +451,9 @@ html, body {
     box-shadow: 0px -2px 27px -11px rgba(0, 0, 0, 0.25);
     border-radius: 16px 16px 0 0;
     position: fixed;
-    bottom: -412px;
+    bottom: -812px;
     width: 100%;
-    transition: .2s;
+    transition: .6s;
 
     &.active{
       position: fixed;
