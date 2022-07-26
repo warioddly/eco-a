@@ -2,7 +2,7 @@
   <div class="navigation">
     <ul class="nav-items">
       <li class="item">
-        <router-link to="/list" class="nav-item-link">
+        <router-link to="/" class="nav-item-link">
           <div class="ico icon-nav-redeem"></div>
           <p>Обменять</p>
         </router-link>
@@ -14,19 +14,19 @@
         </router-link>
       </li>
       <li class="item">
-        <router-link to="/" class="nav-item-link">
+        <router-link  to="/" :class="'nav-item-link ' + [$route.fullPath === '/list' ? 'router-link-active': ' ']">
           <div class="ico icon-nav-marker-pin"></div>
           <p>Объекты</p>
         </router-link>
       </li>
       <li class="item">
-        <router-link to="/list" class="nav-item-link">
+        <router-link to="/calendar" class="nav-item-link">
           <div class="ico icon-nav-calendar-check"></div>
           <p>Календарь</p>
         </router-link>
       </li>
       <li class="item">
-        <router-link to="/list" class="nav-item-link">
+        <router-link to="/" class="nav-item-link">
           <div class="ico icon-nav-menu"></div>
           <p>Еще</p>
         </router-link>
@@ -36,25 +36,21 @@
       <div class="line"></div>
     </div>
   </div>
-  <detail-component />
 </template>
 
 <script>
-import DetailComponent from "@/components/Navigation/DetailComponent";
+
 import $ from 'jquery'
 
 export default {
   name: 'navigation-component',
-  components: {
-    DetailComponent
-  },
 
   methods: {
     onSwipeUp() {
       return function (direction) {
         if(direction === 'top' || direction === 'right' || direction === 'left'){
-          console.log(direction);
           $("#detail").addClass('active')
+          $('#overlay').addClass('active');
         }
       };
     },

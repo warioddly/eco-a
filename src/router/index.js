@@ -1,17 +1,30 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import MapView from '@/views/MapView.vue'
-import ListView from "@/views/ListView";
+import MapView from '@/views/ObjectViews/MapView'
+import ListView from "@/views/ObjectViews/ListView";
+import WasteCollectionCalendarView from "@/views/CalendarViews/WasteCollectionCalendarView";
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: MapView,
+    children: [
+      {
+        path: '/list',
+        name: 'list',
+        component: ListView
+      },
+    ]
   },
   {
     path: '/list',
     name: 'list',
     component: ListView
+  },
+  {
+    path: '/calendar',
+    name: 'calendar',
+    component: WasteCollectionCalendarView
   }
 ]
 

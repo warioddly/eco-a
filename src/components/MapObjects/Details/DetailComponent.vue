@@ -1,15 +1,14 @@
-<link rel="stylesheet" href="../../assets/scss/main.scss">
 <template>
   <div class="detail" id="detail" v-touch:swipe="onSwipeDown()">
     <div id="detail-card">
       <div class="line"></div>
       <div class="info">
         <div class="card-info information">
-          <p class="address">г.Москва, Самаркандский бульвар 37, стр.3</p>
+          <p class="address">{{ selectedMarker['address'] }}</p>
           <div class="range-block">
             <div class="icon-route"></div>
             <span>
-            <p class="range">356</p>
+            <p class="range">{{ selectedMarker['routeRange'] }}</p>
             <p class="measure">Метров</p>
           </span>
           </div>
@@ -34,8 +33,8 @@
         </div>
         <div class="contact">
           <div class="phone">
-            <p class="text-title">Владелец</p>
-            <p class="text-secondary">ООО “Эколайн”</p>
+            <p class="text-title">Телефон</p>
+            <p class="text-secondary">+7(123)456-78-90</p>
           </div>
           <div class="work-time">
             <p class="text-title">Часы работы</p>
@@ -48,66 +47,59 @@
       </div>
     </div>
   </div>
+<!--  <div class="filter" id="filter" v-touch:swipe="onSwipeDown()">-->
+<!--    wadawdawdawddddddddddddddddd-->
+<!--    <div class="line"></div>-->
+<!--  </div>-->
 </template>
 
 <script>
 
 import $ from "jquery";
+import {mapGetters, mapMutations} from "vuex";
+import router from "@/router";
 
 export default {
   name: 'detail-component',
+
+  computed: mapGetters(['selectedMarker', 'geolocation', 'markers']),
 
   methods: {
     onSwipeDown() {
       return function (direction) {
         if(direction === 'bottom' || direction === 'right' || direction === 'left'){
           $("#detail").removeClass('active')
+          $('#overlay').removeClass('active');
         }
       };
     },
 
-    buildRoute(){
-        console.log('qqqqqqq');
+    async buildRoute() {
+      $('#detail').removeClass('active');
+      $('#overlay').removeClass('active');
+      this.SET_MAP_INIT(true);
 
-      var pointA = [55.749, 37.524],
-          pointB = "Moscow, Red square",
-          /**
-           * Creating a multiroute.
-           * @see https://api.yandex.com/maps/doc/jsapi/2.1/ref/reference/multiRouter.MultiRoute.xml
-           */
-          multiRoute = new ymaps.multiRouter.MultiRoute({
-            referencePoints: [
-              pointA,
-              pointB
-            ],
-            params: {
-              //The routing type - pedestrian.
-              routingMode: 'pedestrian'
-            }
-          }, {
-            // Automatically set the map boundaries so the entire route is visible.
-            boundsAutoApply: true
-          });
+      map.geoObjects.removeAll();
+      map.geoObjects.add(objectManager);
 
-      // Creating a button.
-      var changePointsButton = new ymaps.control.Button({
-        data: {content: "Swap points A and B"},
-        options: {selectOnClick: true}
-      });
+      if(this.$router.currentRoute.path !== '/'){
+        router.replace('/');
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      }
 
-      // Declaring handlers for the button.
-      changePointsButton.events.add('select', function () {
-        multiRoute.model.setReferencePoints([pointB, pointA]);
-      });
+      multiRoute = new ymaps.multiRouter.MultiRoute({
+        referencePoints: [this.geolocation, this.selectedMarker.geometry.coordinates],
+        params: { routingMode: 'pedestrian' } }, { boundsAutoApply: true });
+      map.geoObjects.add(multiRoute);
 
-      changePointsButton.events.add('deselect', function () {
-        multiRoute.model.setReferencePoints([pointA, pointB]);
-      });
-
-      this.map.geoObjects.add(multiRoute);
-
+      setTimeout(() => {
+        this.SET_MAP_INIT(false);
+      }, 5000)
     },
-  }
+
+    ...mapMutations(["SET_SELECTED_MARKER", 'SET_MAP_INIT']),
+
+  },
 }
 </script>
 

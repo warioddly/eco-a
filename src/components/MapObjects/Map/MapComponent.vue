@@ -1,32 +1,36 @@
 <template>
-    <div id="map" class="map">
-      <search-component />
-      <template v-if="mapInitialized">
-        <div data-v-6ae436b8="" class="map-preloading">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 30"  xml:space="preserve">
-            <rect x="0" y="13" width="4" height="5">
-              <animate attributeName="height" attributeType="XML" values="5;21;5" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>
-              <animate attributeName="y" attributeType="XML" values="13; 5; 13" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>
-            </rect>
-            <rect x="10" y="13" width="4" height="5">
-              <animate attributeName="height" attributeType="XML" values="5;21;5" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>
-              <animate attributeName="y" attributeType="XML" values="13; 5; 13" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>
-            </rect>
-            <rect x="20" y="13" width="4" height="5">
+<div>
+  <transition-group name="fade">
+    <template v-if="this.mapInitialized">
+      <div data-v-6ae436b8="" class="map-preloading">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 30"  xml:space="preserve">
+          <rect x="0" y="13" width="4" height="5" rx="2">
+            <animate attributeName="height" attributeType="XML" values="5;21;5" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>
+            <animate attributeName="y" attributeType="XML" values="13; 5; 13" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>
+          </rect>
+          <rect x="10" y="13" width="4" height="5" rx="2">
+            <animate attributeName="height" attributeType="XML" values="5;21;5" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>
+            <animate attributeName="y" attributeType="XML" values="13; 5; 13" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>
+          </rect>
+          <rect x="20" y="13" width="4" height="5" rx="2">
               <animate attributeName="height" attributeType="XML" values="5;21;5" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>
-              <animate attributeName="y" attributeType="XML" values="13; 5; 13" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>
-            </rect>
-          </svg>
-        </div>
-      </template>
-    </div>
+            <animate attributeName="y" attributeType="XML" values="13; 5; 13" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>
+          </rect>
+        </svg>
+      </div>
+    </template>
+  </transition-group>
+</div>
+  <search-component />
+  <div id="map" class="map">
+  </div>
 </template>
 
 <script>
 
-import SearchComponent from "@/components/SearchComponent";
+import { mapGetters, mapMutations } from "vuex"
+import SearchComponent from "@/components/MapObjects/components/SearchComponent";
 import $ from "jquery";
-var map = {};
 
 export default {
   name: 'map-component',
@@ -34,6 +38,8 @@ export default {
   components: {
     SearchComponent
   },
+
+  computed: mapGetters(['markers', 'mapInitialized']),
 
   data () {
     return {
@@ -46,40 +52,26 @@ export default {
       location: [],
       locationCircle: {},
       coords: [],
-      mapInitialized: true,
     }
   },
 
+
   methods: {
     run(){
-      ymaps.geolocation.get().then( (res) => {
-        let mapContainer = $('#map'),
-        bounds = res.geoObjects.get(0).properties.get('boundedBy'),
-        mapState = ymaps.util.bounds.getCenterAndZoom(
-            bounds,
-            [mapContainer.width(), mapContainer.height()]
-        );
-        mapState['controls'] = [];
-        mapState['zoom'] = 16;
-
-        this.createMap(mapState);
-      }, (e) => {
-        this.createMap({
-          zoom: 4,
+      map = new ymaps.Map('map', {
+          zoom: 10,
           controls: [],
-        });
-      });
-    },
+          center: [55.831903, 37.411961]
+        })
 
-    createMap(state) {
-      this.map = new ymaps.Map('map', state);
-      this.markerIntitialize();
-      this.getLocation();
+      this.markerInitialize();
+      // this.getLocation();
 
       setTimeout(() => {
-        this.mapInitialized = false;
+        this.SET_MAP_INIT(false);
         this.createControllers();
-      }, 1500)
+      }, 2000)
+
     },
 
     createControllers(){
@@ -132,7 +124,7 @@ export default {
             }
         });
 
-      this.map.controls.add(zoomControl);
+      map.controls.add(zoomControl);
 
       // LocationController
 
@@ -152,7 +144,8 @@ export default {
       geolocationControl.events.add('click', () => {
         this.getLocation();
       });
-      this.map.controls.add(geolocationControl);
+
+      map.controls.add(geolocationControl);
 
     },
 
@@ -162,7 +155,7 @@ export default {
         this.location = res.geoObjects.position;
         this.coords = res.geoObjects.position;
 
-        if(this.mapInitialized) {
+        if(!this.mapInitialized) {
             // Creating user location icon
 
           res.geoObjects.options.set('iconImageHref', require('@/assets/images/icons/user.svg'));
@@ -170,8 +163,7 @@ export default {
             balloonContentBody: 'Мое местоположение'
           });
 
-
-          this.map.geoObjects.add(res.geoObjects);
+          map.geoObjects.add(res.geoObjects);
 
             // Creating a circle.
           var myCircle = new ymaps.Circle([this.location, 120], {
@@ -187,7 +179,7 @@ export default {
             });
 
             // Adding the circle to the map.
-            this.map.geoObjects.add(myCircle);
+          map.geoObjects.add(myCircle);
 
             this.locationCircle = myCircle
           }
@@ -197,32 +189,45 @@ export default {
       });
     },
 
-    async markerIntitialize() {
-      $.ajax({
-        url: '/data.json'
-      }).done((data) => {
-
-        var trashCollection = new ymaps.GeoObjectCollection({
-          hintContent: 'A custom placemark icon',
-          balloonContent: 'This is a pretty placemark'
-        }, {
-          iconLayout: 'default#image',
-          iconImageHref: require('@/assets/images/icons/trash.svg'),
-          iconImageSize: [30, 42],
-          iconImageOffset: [-5, -38]
-        });
-
-        for (let i = 0; i < data.length; i++) {
-          trashCollection.add(new ymaps.Placemark(data[i].coords));
-
-        }
-
-        this.map.geoObjects.add(trashCollection);
-
-        trashCollection.events.add('click', () => console.log(111));
-
+    markerInitialize() {
+      let objects = [], markers = this.markers;
+      objectManager = new ymaps.ObjectManager({
+        clusterize: true,
+        gridSize: 32,
+        clusterDisableClickZoom: false,
       });
-    }
+
+      for (var i = 0, l = markers.length; i < l; i++) {
+        objects.push({
+          type: 'Feature',
+          id: markers[i].id,
+          geometry: {
+            type: 'Point',
+            coordinates: markers[i].geometry.coordinates
+          },
+          options: {
+            iconLayout: 'default#image',
+            iconImageHref: markers[i].pointType === "trash" ? require('@/assets/images/icons/trash.svg') : require('@/assets/images/icons/waste.svg'),
+            iconImageSize: [30, 42],
+            iconImageOffset: [-5, -38]
+          }
+        });
+      }
+
+      objectManager.add(objects);
+      objectManager.events.add('click', (event) => {
+        let marker = this.markers.find(obj => obj.id === event.get('objectId'));
+        if(marker){
+          this.SET_SELECTED_MARKER(marker)
+          $("#detail").toggleClass('active');
+        }
+      });
+
+      map.geoObjects.add(objectManager);
+    },
+
+    ...mapMutations(["SET_SELECTED_MARKER", "SET_MAP_INIT"]),
+
   },
 
   created() {

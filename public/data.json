@@ -1,114 +1,396 @@
 [
   {
-    "type": "trash",
-    "address": "г.Бишкек, Исторический музей чуй 1, стр.43",
-    "coords": [
-      42.876199973804816,
-      74.60364282131195
-    ]
+    "id": 1,
+    "pointType": "trash",
+    "address": "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.831903, 37.411961]
+    }},
+  {
+    "id": 2,
+    "pointType": "trash",
+    "address":  "г. Бишкек, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.763338, 37.565466]
+    }},
+  {
+    "id": 3,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.744522, 37.616378]
+    }},
+  {
+    "id": 4,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.780898, 37.642889]
+    }},
+  {
+    "id": 5,
+    "pointType": "waste",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.793559, 37.435983]
+    }},
+  {
+    "id": 6,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.800584, 37.675638]
+    }},
+  {
+    "id": 7,
+    "pointType": "waste",
+    "address":  "Мин-куш",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.716733, 37.589988]
+    }},
+  {
+    "id": 8,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.775724, 37.56084]
+    }},
+  {
+    "id": 9,
+    "pointType": "waste",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.822144, 37.433781]
+    }},
+  {
+    "id": 10,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.87417, 37.669838]
+    }},
+  {
+    "id": 11,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.71677, 37.482338]
+    }},
+  {
+    "id": 12,
+    "pointType": "waste",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.78085, 37.75021]
+    }},
+  {
+    "id": 13,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.810906, 37.654142]
+    }},
+  {
+    "id": 14,
+    "pointType": "waste",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.865386, 37.713329]
+    }},
+  {
+    "id": 15,
+    "pointType": "waste",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.847121, 37.525797]
+    }},
+  {
+    "id": 16,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.778655, 37.710743]
+    }},
+  {
+    "id": 17,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.623415, 37.717934]
+    }},
+  {
+    "id": 18,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.863193, 37.737]
+    }},
+  {
+    "id": 19,
+    "pointType": "waste",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.86677, 37.760113]
+    }},
+  {
+    "id": 20,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.698261, 37.730838]
+    }},
+  {
+    "id": 21,
+    "pointType": "waste",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.6338, 37.564769]
+    }},
+  {
+    "id": 22,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.639996, 37.5394]
+    }},
+  {
+    "id": 23,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.69023, 37.405853]
+    }},
+  {
+    "id": 24,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.77597, 37.5129]
+    }},
+  {
+    "id": 25,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.775777, 37.44218]
+    }},
+  {
+    "id": 26,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.811814, 37.440448]
+    }},
+  {
+    "id": 27,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.751841, 37.404853]
+    }},
+  {
+    "id": 28,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.627303, 37.728976]
+    }},
+  {
+    "id": 29,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.816515, 37.597163]
+    }},
+  {
+    "id": 30,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.664352, 37.689397]
+    }},
+  {
+    "id": 31,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.679195, 37.600961]
+    }},
+  {
+    "id": 32,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.673873, 37.658425]
+    }},
+  {
+    "id": 33,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.681006, 37.605126]
+    }},
+  {
+    "id": 34,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.876327, 37.431744]
+    }},
+  {
+    "id": 35,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.843363, 37.778445]
+    }},
+  {
+    "id": 36,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.875445, 37.549348]
+    }},
+  {
+    "id": 37,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.662903, 37.702087]
+    }},
+  {
+    "id": 38,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.746099, 37.434113]
+    }},
+  {
+    "id": 39,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.83866, 37.712326]
+    }},
+  {
+    "id": 40,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.774838, 37.415725]
+    }},
+  {
+    "id": 41,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.871539, 37.630223]
+    }},
+  {
+    "id": 42,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.657037, 37.571271]
+    }},
+  {
+    "id": 43,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.691046, 37.711026]
+    }},
+  {
+    "id": 44,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.803972, 37.65961]
+    }},
+  {
+    "id": 45,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.616448, 37.452759]
+    }
   },
   {
-    "type": "waste",
-    "address": "г.Бишкек, Магистрал-Джал 12, стр.13",
-    "coords": [
-      42.829652952249425,
-      74.56875801086426
-    ]
-  },
+    "id": 46,
+    "pointType": "waste",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.781329, 37.442781]
+    }},
   {
-    "type": "trash",
-    "address": "г.Нарын, Островский бульвар 317, стр.43",
-    "coords": [
-      42.87344808444721,
-      74.60729598999023
-    ]
-  },
+    "id": 47,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.844708, 37.74887]
+    }},
   {
-    "type": "waste",
-    "address": "г.Ош, Лермантов бульвар 317, стр.43",
-    "coords": [
-      42.87042872752173,
-      74.60866928100586
-    ]
-  },
+    "id": 48,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.723123, 37.406067]
+    }},
   {
-    "type": "trash",
-    "address": "г.Иссык-Куль, Бостери бульвар 317, стр.43",
-    "coords": [
-      42.87017710777703,
-      74.62411880493164
-    ]
-  },
-  {
-    "type": "trash",
-    "address": "г.Москва, Самаркандский бульвар 37, стр.3",
-    "coords": [
-      42.859356488383945,
-      74.58824157714844
-    ]
-  },
-  {
-    "type": "waste",
-    "address": "г.Нарын, Островский бульвар 317, стр.43",
-    "coords": [
-      42.87401419742621,
-      74.59914207458496
-    ]
-  },
-  {
-    "type": "trash",
-    "address": "г.Нарын, Островский бульвар 317, стр.43",
-    "coords": [
-      42.874706106237205,
-      74.61630821228026
-    ]
-  },
-  {
-    "type": "waste",
-    "address": "г.Нарын, Островский бульвар 317, стр.43",
-    "coords": [
-      42.86841574084276,
-      74.61381912231445
-    ]
-  },
-  {
-    "type": "trash",
-    "address": "г.Москва, Самаркандский бульвар 37, стр.3",
-    "coords": [
-      42.86633977957154,
-      74.60626602172852
-    ]
-  },
-  {
-    "type": "trash",
-    "address": "г.Москва, Самаркандский бульвар 37, стр.3",
-    "coords": [
-      42.868981899981655,
-      74.61021423339844
-    ]
-  },
-  {
-    "type": "trash",
-    "address": "г.Нарын, Островский бульвар 317, стр.43",
-    "coords": [
-      42.86659141495917,
-      74.61175918579102
-    ]
-  },
-  {
-    "type": "waste",
-    "address": "г.Москва, Самаркандский бульвар 37, стр.3",
-    "coords": [
-      42.862565125665874,
-      74.61030006408691
-    ]
-  },
-  {
-    "type": "trash",
-    "address": "г.Москва, Самаркандский бульвар 37, стр.3",
-    "coords": [
-      42.862565125665874,
-      74.61030006408691
-    ]
+    "id": 49,
+    "pointType": "trash",
+    "address":  "г. Москва, Самаркандский бульвар 37, кв 3.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.858585, 37.48498]
+    }
   }
 ]

@@ -1,309 +1,125 @@
-import { createStore } from 'vuex'
+import {createStore} from 'vuex'
+import $ from "jquery";
 
 export default createStore({
   state: {
-    allData: [
-      {
-        "type": "trash",
-        "address": "Мин-куш",
-        "coords": [
-          42.87344808444721,
-          74.60729598999023
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.87042872752173,
-          74.60866928100586
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.87017710777703,
-          74.62411880493164
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.859356488383945,
-          74.58824157714844
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.87401419742621,
-          74.59914207458496
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.874706106237205,
-          74.61630821228026
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.86841574084276,
-          74.61381912231445
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.86633977957154,
-          74.60626602172852
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          74.61021423339844,
-          42.868981899981655
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.86659141495917,
-          74.61175918579102
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.862565125665874,
-          74.61030006408691
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.862565125665874,
-          74.61030006408691
-        ]
-      }
-    ],
-    trashes: [
-      {
-        "type": "trash",
-        "address": "Мин-куш",
-        "coords": [
-          42.87344808444721,
-          74.60729598999023
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.87042872752173,
-          74.60866928100586
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.87017710777703,
-          74.62411880493164
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.859356488383945,
-          74.58824157714844
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.87401419742621,
-          74.59914207458496
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.874706106237205,
-          74.61630821228026
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.86841574084276,
-          74.61381912231445
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.86633977957154,
-          74.60626602172852
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          74.61021423339844,
-          42.868981899981655
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.86659141495917,
-          74.61175918579102
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.862565125665874,
-          74.61030006408691
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.862565125665874,
-          74.61030006408691
-        ]
-      }
-    ],
-    waste: [
-      {
-        "type": "trash",
-        "address": "Мин-куш",
-        "coords": [
-          42.87344808444721,
-          74.60729598999023
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.87042872752173,
-          74.60866928100586
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.87017710777703,
-          74.62411880493164
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.859356488383945,
-          74.58824157714844
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.87401419742621,
-          74.59914207458496
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.874706106237205,
-          74.61630821228026
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.86841574084276,
-          74.61381912231445
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.86633977957154,
-          74.60626602172852
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          74.61021423339844,
-          42.868981899981655
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.86659141495917,
-          74.61175918579102
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.862565125665874,
-          74.61030006408691
-        ]
-      },
-      {
-        "type": "trash",
-        "address": "Нарын",
-        "coords": [
-          42.862565125665874,
-          74.61030006408691
-        ]
-      }
-    ],
-    selectedId: '',
+    markers: [],
+    mapInitialized: true,
+    userGeoLocation: {},
+    mapCenter: [],
+    selectedMarker: {
+      address: "Empty",
+      routeRange: 0
+    },
+    filteredMarkers: {},
+    toRoute: {},
   },
+
   getters: {
+    mapInitialized(state){
+      return state.mapInitialized;
+    },
+
+    filteredMarkers(state){
+      return state.filteredMarkers;
+    },
+
+    markers(state){
+      return state.markers;
+    },
+
+    selectedMarker(state){
+      return state.selectedMarker;
+    },
+
+    geolocation(state){
+      return state.userGeoLocation;
+    }
   },
+
   mutations: {
+    SET_MAP_INIT(state, payload){
+      state.mapInitialized = payload
+    },
+
+    SET_GEOLOCATION(state, payload){
+      state.userGeoLocation = payload;
+      state.userGeoLocation = [55.875445, 37.549348];
+    },
+
+    SET_MARKERS(state, payload){
+      state.markers = payload;
+    },
+
+    SET_MARKER_RANGE(state){
+
+      assignRouteRanges(state.markers);
+
+      function assignRouteRanges(markers){
+        for (let i = 0; i < markers.length; i++) {
+          getRouteRange(markers[i].geometry.coordinates, i)
+        }
+      }
+
+      function getRouteRange(coords, index){
+        let way, segments, sumSegments = 0;
+        ymaps.route([state.userGeoLocation , coords])
+            .then((route) => {
+
+              way = route.getPaths().get(0);
+              segments = way.getSegments();
+
+              for (var j = 0; j < segments.length; j++) {
+                sumSegments += parseInt(segments[j].getLength())
+              }
+
+              createNewArr(sumSegments, index);
+            });
+      }
+
+      function createNewArr(item, index){
+        Object.assign(state.markers[index], {
+          routeRange: item
+        });
+      }
+
+    },
+
+    SET_SELECTED_MARKER(state, payload){
+      state.selectedMarker = payload;
+    },
+
+    SET_SEARCH_MARKER(state, word) {
+      let filtered = filteredList();
+      function filteredList() {
+        return state.markers.filter((marker) => marker.address.toLowerCase().includes(word));
+      }
+
+      state.filteredMarkers = filtered;
+    }
   },
+
   actions: {
+
+    async initMarkers(context){
+      await $.ajax({
+        url: '/data.json'
+      }).done((data) => {
+        context.commit('SET_MARKERS', data)
+        context.commit('SET_SEARCH_MARKER', data)
+      });
+    },
+
+    async initGeolocation(context){
+      await ymaps.geolocation.get({ provider: 'auto', mapStateAutoApply: true }).then((res) => {
+        context.commit('SET_GEOLOCATION', res.geoObjects.position)
+      });
+
+      context.commit("SET_MARKER_RANGE", this.state.markers);
+    },
+
   },
+
   modules: {
-  }
+  },
 })

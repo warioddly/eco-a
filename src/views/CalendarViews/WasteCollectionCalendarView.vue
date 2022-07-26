@@ -1,10 +1,8 @@
 <template>
   <div class="wrapper">
-    <header>
-      <list-or-map-component />
-    </header>
     <main class="content">
-      <map-component />
+      <waste-collection-calendar />
+      <detail-component/>
     </main>
     <nav>
       <navigation-component/>
@@ -14,18 +12,16 @@
 
 <script>
 
-import MapComponent from "@/components/Map/MapComponent";
-import MapComponent2 from "@/components/Map/MapComponent2";
+import DetailComponent from "@/components/MapObjects/Details/DetailComponent";
 import NavigationComponent from "@/components/Navigation/NavigationComponent";
-import ListOrMapComponent from "@/components/ListOrMapComponent";
+import WasteCollectionCalendar from "@/components/WasteCollectionCalendar/CalendarComponent";
 
 export default {
-  name: 'HomeView',
+  name: 'WasteCollectionCalendarView',
   components: {
-    MapComponent,
-    MapComponent2,
+    WasteCollectionCalendar,
     NavigationComponent,
-    ListOrMapComponent
+    DetailComponent
   }
 }
 </script>
