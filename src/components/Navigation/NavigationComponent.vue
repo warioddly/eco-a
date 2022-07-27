@@ -8,7 +8,7 @@
         </router-link>
       </li>
       <li class="item">
-        <router-link to="/" class="nav-item-link">
+        <router-link to="/applications" class="nav-item-link">
           <div class="ico icon-nav-waste"></div>
           <p>Заявки</p>
         </router-link>

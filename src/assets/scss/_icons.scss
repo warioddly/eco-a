@@ -108,4 +108,11 @@
     background-image: url("~@/assets/images/icons/user-profile.svg");
   }
 
+  &-application-search {
+    @extend .icon;
+    width: 120px;
+    height: 120px;
+    background-image: url("~@/assets/images/icons/application-search.svg");
+  }
+
 }

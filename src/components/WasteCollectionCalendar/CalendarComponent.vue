@@ -1,15 +1,9 @@
 <template>
   <div id="calendar">
-      <div class="header">
-        <router-link to="/">
-          <div class="icon-back"></div>
-        </router-link>
-        <p class="header-title">Календарь сбора отходов</p>
-        <div class="icon-user-profile"></div>
-      </div>
+    <header-component title="Календарь сбора отходов"/>
       <div class="body">
         <div class="calendar">
-          <Calendar is-expanded show-weeknumbers="inside" :attributes="attributes" />
+          <Calendar is-expanded :attributes="attributes" />
         </div>
       </div>
   </div>
@@ -17,10 +11,14 @@
 
 <script>
 
+import HeaderComponent from "@/components/Navigation/HeaderComponent.vue";
 import 'v-calendar/dist/style.css';
 
 export default {
   name: 'waste-collection-calendar',
+  components: {
+    HeaderComponent
+  },
 
   data() {
     return {
@@ -31,7 +29,7 @@ export default {
             contentStyle: {
               backgroundColor: "#1B8EE2",
               borderRadius: "8px",
-              padding: "21px",
+              padding: "18px",
               color: "white",
             }
           },

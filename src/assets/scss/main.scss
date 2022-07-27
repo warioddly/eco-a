@@ -276,11 +276,6 @@ html, body {
       // CALENDAR VIEW
 
       #calendar{
-        .header{
-          display: flex;
-          justify-content: space-between;
-          padding: 15px 12px 15px 14px;
-        }
 
         .body{
           margin-top: 18px;
@@ -316,16 +311,63 @@ html, body {
               font-size: 13px;
               line-height: 0;
               font-weight: 500;
-              padding: 15px;
             }
 
             .vc-day-box-center-bottom{
-              padding-bottom: 8px ;
+              padding-bottom: 5px ;
+            }
+
+            .vc-title{
+                text-transform: capitalize;
             }
 
             .vc-container{
               border: none;
             }
+          }
+        }
+      }
+
+      #applications{
+        height: 85%;
+
+        .body{
+          height: 100%;
+          display: grid;
+          justify-content: center;
+          align-items: center;
+
+          margin: auto;
+          .application-search-ico{
+            margin: 0 auto;
+          }
+
+          .no-applications{
+            font-size: 24px;
+            line-height: 125%;
+          }
+
+          .no-applications-secondary{
+            font-size: 16px;
+          }
+
+          .create-application-btn{
+            margin-top: 16px;
+            background-color: #6958D0;
+          }
+        }
+      }
+
+      #hand-over-recyclables{
+
+        .body{
+
+          .title{
+            color: $blackColor;
+            font-size: 24px;
+            line-height: 125%;
+            font-weight: 600;
+            margin-bottom: 21px;
           }
         }
       }
@@ -381,6 +423,12 @@ html, body {
         }
       }
     }
+  }
+
+  .header{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 12px 15px 14px;
   }
 
   .map-preloading{
@@ -590,6 +638,26 @@ html, body {
     text-align: center;
   }
 
+  .text-center{
+    text-align: center;
+  }
+
+  .pd-15{
+    padding: 0 15px;
+  }
+
+  .mg-15{
+    margin: 0 15px;
+  }
+
+  .mb-16{
+    margin-bottom: 16px;
+  }
+
+  .mt-16{
+    margin-top: 16px;
+  }
+
   .text-secondary{
     font-family: $fontManrope;
     font-style: $fontStyle;
@@ -599,6 +667,7 @@ html, body {
   }
 
   .btn{
+    text-decoration: none;
     max-width: 330px;
     margin: 0 auto;
     font-family: $fontManrope;
