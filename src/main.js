@@ -4,12 +4,9 @@ import router from './router'
 import store from './store'
 import './assets/scss/main.scss'
 import './assets/scss/_icons.scss'
-import 'vue-input-ui/dist/vue-input-ui.css';
 
 import Vue3TouchEvents from 'vue3-touch-events'
-import { Calendar } from 'v-calendar';
-import VueInputUi from 'vue-input-ui';
-
+import { Calendar, DatePicker } from 'v-calendar';
 
 const app = createApp(App)
     .use(store)
@@ -17,6 +14,6 @@ const app = createApp(App)
     .use(Vue3TouchEvents)
 
 app.component('Calendar', Calendar)
-app.component('ui-input', VueInputUi);
+app.component('date-picker', DatePicker)
 
 app.mount('#app')

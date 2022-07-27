@@ -91,6 +91,7 @@
   &-clear {
     @extend .icon;
     width: 24px;
+    height: 24px;
     background-image: url("~@/assets/images/icons/clear.svg");
   }
 
@@ -113,6 +114,34 @@
     width: 120px;
     height: 120px;
     background-image: url("~@/assets/images/icons/application-search.svg");
+  }
+
+  &-address-marker {
+    @extend .icon;
+    width: 24px;
+    height: 24px;
+    background-image: url("~@/assets/images/icons/address-marker.svg");
+  }
+
+  &-calendar {
+    @extend .icon;
+    width: 24px;
+    height: 24px;
+    background-image: url("~@/assets/images/icons/calendar.svg");
+  }
+
+  &-clock {
+    @extend .icon;
+    width: 24px;
+    height: 24px;
+    background-image: url("~@/assets/images/icons/clock.svg");
+  }
+
+  &-camera {
+    @extend .icon;
+    width: 24px;
+    height: 24px;
+    background-image: url("~@/assets/images/icons/camera-plus.svg");
   }
 
 }
