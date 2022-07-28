@@ -128,7 +128,6 @@
 
 <script>
 
-import { ValidationProvider } from 'vee-validate';
 import DetailComponent from "@/components/Applications/Details/DetailComponent";
 import NavigationComponent from "@/components/Navigation/NavigationComponent";
 import HeaderComponent from "@/components/Navigation/HeaderComponent.vue";
@@ -140,7 +139,6 @@ export default {
     NavigationComponent,
     DetailComponent,
     HeaderComponent,
-    ValidationProvider
   },
   data() {
     return {
