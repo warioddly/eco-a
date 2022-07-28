@@ -1,6 +1,6 @@
 <template>
   <div id="list">
-    <div id="overlay" ></div>
+    <div id="overlay"></div>
     <search-component />
     <list-block-component/>
   </div>

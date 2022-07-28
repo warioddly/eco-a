@@ -6,6 +6,9 @@ import ApplicationsView from "@/views/Applications/ApplicationsView";
 import HandOverRecyclablesView from "@/views/Applications/HandOverRecyclablesView";
 import ApplicationsSuccessView from "@/views/Applications/ApplicationsSuccessView";
 import ApplicationsListView from "@/views/Applications/ApplicationsListView";
+import ApplicationsShowView from "@/views/Applications/ApplicationsShowView";
+import ApplicationsCancelView from "@/views/Applications/ApplicationsCancelView";
+import ApplicationsCancelRequestView from "@/views/Applications/ApplicationsCancelRequestView";
 
 const routes = [
   {
@@ -39,9 +42,24 @@ const routes = [
     component: ApplicationsSuccessView
   },
   {
+    path: "/applications/cancel",
+    name: "applicationsCancel",
+    component: ApplicationsCancelView
+  },
+  {
     path: "/applications/list",
     name: "applicationsList",
     component: ApplicationsListView
+  },
+  {
+    path: "/applications/list/show",
+    name: "applicationsShow",
+    component: ApplicationsShowView
+  },
+  {
+    path: "/applications/list/show/cancel",
+    name: "applicationsCancelRequest",
+    component: ApplicationsCancelRequestView
   },
 ]
 

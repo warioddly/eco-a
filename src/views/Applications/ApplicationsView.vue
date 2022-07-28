@@ -1,7 +1,24 @@
 <template>
   <div class="wrapper">
     <main class="content">
-      <applications-component />
+      <div id="applications">
+        <header-component title="Заявки" class="header-nav"/>
+        <div class="body">
+          <div>
+            <div class="ico icon-application-search application-search-ico"></div>
+            <p class="no-applications text-title text-center pd-15">Нет заявок</p>
+            <p class="no-applications-secondary text-secondary text-center pd-15">У вас еще нет ни одной заявки на вывоз мусора</p>
+            <div class="mg-15">
+              <router-link :to="{name: 'handOverRecyclables'}" class="btn create-application-btn">
+                Создать заявку
+              </router-link>
+            </div>
+          </div>
+          <router-link :to="{name: 'handOverRecyclables'}" class="float-btn">
+            <div class="circle-btn icon-add-btn"></div>
+          </router-link>
+        </div>
+      </div>
       <detail-component/>
     </main>
     <nav>
@@ -12,16 +29,16 @@
 
 <script>
 
-import DetailComponent from "@/components/MapObjects/Details/DetailComponent";
+import DetailComponent from "@/components/Applications/Details/DetailComponent";
 import NavigationComponent from "@/components/Navigation/NavigationComponent";
-import ApplicationsComponent from "@/components/Applications/ApplicationsComponent";
+import HeaderComponent from "@/components/Navigation/HeaderComponent.vue";
 
 export default {
   name: 'ApplicationsView',
   components: {
-    ApplicationsComponent,
     NavigationComponent,
-    DetailComponent
+    DetailComponent,
+    HeaderComponent
   }
 }
 </script>
