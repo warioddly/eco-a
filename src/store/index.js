@@ -102,17 +102,9 @@ export default createStore({
   actions: {
 
     async initMarkers(context){
-      // await $.ajax({
-      //   url: '/data.json'
-      // }).done((data) => {
-      //   context.commit('SET_MARKERS', data)
-      //   context.commit('SET_SEARCH_MARKER', data)
-      // });
-
       await $.ajax({
-        url: 'http://127.0.0.1:8000/api/getMarkers'
+        url: '/data.json'
       }).done((data) => {
-        data = JSON.parse(data);
         context.commit('SET_MARKERS', data)
         context.commit('SET_SEARCH_MARKER', data)
       });

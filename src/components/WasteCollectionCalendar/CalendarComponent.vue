@@ -1,6 +1,6 @@
 <template>
   <div id="calendar">
-    <header-component title="Календарь сбора отходов"/>
+    <header-component title="Календарь сбора отходов" class="header-nav"/>
       <div class="body">
         <div class="calendar">
           <Calendar is-expanded :attributes="attributes" />

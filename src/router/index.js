@@ -4,6 +4,8 @@ import ListView from "@/views/ObjectViews/ListView";
 import WasteCollectionCalendarView from "@/views/CalendarViews/WasteCollectionCalendarView";
 import ApplicationsView from "@/views/Applications/ApplicationsView";
 import HandOverRecyclablesView from "@/views/Applications/HandOverRecyclablesView";
+import ApplicationsSuccessView from "@/views/Applications/ApplicationsSuccessView";
+import ApplicationsListView from "@/views/Applications/ApplicationsListView";
 
 const routes = [
   {
@@ -31,7 +33,16 @@ const routes = [
     name: "handOverRecyclables",
     component: HandOverRecyclablesView
   },
-
+  {
+    path: "/applications/success",
+    name: "applicationsSuccess",
+    component: ApplicationsSuccessView
+  },
+  {
+    path: "/applications/list",
+    name: "applicationsList",
+    component: ApplicationsListView
+  },
 ]
 
 const router = createRouter({

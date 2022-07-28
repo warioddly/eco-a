@@ -1,6 +1,6 @@
 <template>
   <div id="applications">
-      <header-component title="Заявки"/>
+      <header-component title="Заявки" class="header-nav"/>
       <div class="body">
         <div>
           <div class="ico icon-application-search application-search-ico"></div>
@@ -12,6 +12,9 @@
             </router-link>
           </div>
         </div>
+        <router-link :to="{name: 'handOverRecyclables'}" class="float-btn">
+            <div class="circle-btn icon-add-btn"></div>
+          </router-link>
       </div>
   </div>
 </template>
