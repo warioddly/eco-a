@@ -128,10 +128,13 @@
 
 <script>
 
+import $ from "jquery"
 import DetailComponent from "@/components/Applications/Details/DetailComponent";
 import NavigationComponent from "@/components/Navigation/NavigationComponent";
 import HeaderComponent from "@/components/Navigation/HeaderComponent.vue";
-import $ from "jquery"
+import useVuelidate from '@vuelidate/core'
+import { required, email } from '@vuelidate/validators'
+
 
 export default {
   name: 'HandOverRecyclablesView',
@@ -140,6 +143,7 @@ export default {
     DetailComponent,
     HeaderComponent,
   },
+
   data() {
     return {
       datePicker: false,
@@ -153,6 +157,18 @@ export default {
       phone: '',
     }
   },
+
+  setup () {
+    return { v$: useVuelidate() }
+  },
+
+  validations () {
+    return {
+      lastname: { required }, // Matches this.lastName
+      username: { required }, // Matches this.firstName
+    }
+  },
+
 
   methods: {
     DatePickerActivate(){
@@ -176,7 +192,7 @@ export default {
     let day = new Date(Date.now());
     this.pickupDate =  day.toLocaleDateString()
     this.pickupTime =  day.toLocaleTimeString()
-  }
+  },
 }
 </script>
 
