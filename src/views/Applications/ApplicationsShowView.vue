@@ -3,7 +3,7 @@
     <main class="content application-show">
       <div id="applications-list-show">
         <div id="overlay"></div>
-        <header-component title="№325125" class="header-nav" />
+        <header-component :title="'№' + data.id" class="header-nav" />
         <div class="body">
           <carousel
               :items-to-show="1"
@@ -12,8 +12,8 @@
               :touchDrag="true"
               snapAlign="center"
               class="carousel-container" >
-            <slide v-for="slide in 5" :key="slide">
-              <img src="https://wallpaperaccess.com/full/2651906.jpg" alt="" class="carousel-item-image">
+            <slide v-for="slide in data.images" :key="slide">
+              <img :src="slide.path" alt="" class="carousel-item-image">
             </slide>
             <template #addons>
               <pagination class="carousel-pagination"/>
@@ -21,15 +21,15 @@
           </carousel>
           <div class="info">
             <div class="status mb-10 mt-10">
-              <p class="id">№325125</p>
-              <p class="status-canceled application-status">Отменена</p>
+              <p class="id">№{{ data.id }}</p>
+              <p :class="data.status + ' application-status'">Ожидание</p>
             </div>
             <div class="info-body">
-              <p class="address mb-10">Московская область, г.Подольск, ул.Кузнецова 164</p>
+              <p class="address mb-10">{{ data.address }}</p>
               <div class="info">
                 <div class="lab mb-10">
                   <p class="labels">Дата и время вывоза:</p>
-                  <p class="data date">27.07.2022</p>
+                  <p class="data date">{{ data.pickupDate }} {{ data.pickupTime }}</p>
                 </div>
                 <div class="lab mb-10">
                   <p class="labels">Кто заберет:</p>
@@ -37,15 +37,15 @@
                 </div>
                 <div class="lab mb-10">
                   <p class="labels">Тип вторсырья:</p>
-                  <p class="type data">Бумага, Стекло, Пластик, Металл</p>
+                  <p class="type data">{{ data.types.toString() }}</p>
                 </div>
                 <div class="lab mb-10">
                   <p class="labels">Примерный вес:</p>
-                  <p class="capacity data">20 кг</p>
+                  <p class="capacity data">{{ data.capacity }}</p>
                 </div>
                 <div class="lab mb-10">
                   <p class="labels">Контактный телефон:</p>
-                  <p class="phone data">+7(495)123-45-67</p>
+                  <p class="phone data">{{ data.phone }}</p>
                 </div>
               </div>
             </div>
@@ -86,11 +86,30 @@ export default {
     DetailComponent
   },
 
+  data() {
+    return{
+      id: this.$route.params.id,
+      data: [],
+    }
+  },
+
   methods: {
     generateQrCode() {
       $("#detail").toggleClass('active')
       $('#overlay').toggleClass('active');
-    }
+    },
+
+    applicationsFilter(items, id) {
+      return items.filter(item => {
+        id = id.toString();
+        item.id = item.id.toString();
+        return item.id.includes(id)
+    })
+}
+},
+
+  created() {
+    this.data = this.applicationsFilter(JSON.parse(window.localStorage.getItem('applications')), this.id)[0];
   }
 }
 </script>

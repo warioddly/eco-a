@@ -32,6 +32,7 @@
 import DetailComponent from "@/components/Applications/Details/DetailComponent";
 import NavigationComponent from "@/components/Navigation/NavigationComponent";
 import HeaderComponent from "@/components/Navigation/HeaderComponent.vue";
+import router from "@/router";
 
 export default {
   name: 'ApplicationsView',
@@ -39,6 +40,13 @@ export default {
     NavigationComponent,
     DetailComponent,
     HeaderComponent
+  },
+
+  created() {
+    let data = JSON.parse(window.localStorage.getItem('applications'));
+    if(data !== null){
+      router.push("/applications/list")
+    }
   }
 }
 </script>

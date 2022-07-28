@@ -8,20 +8,25 @@
 
           <form action="#" method="POST">
 
-            <div class="off3-group mb-16">
-              <div class="off3-input-group">
-                <input id="lastname" type="text" class="off3-input" v-model="lastname" placeholder=" ">
-                <label for="lastname" class="off3-label">Фамилия <span class="input-required-label">*</span></label>
+            <div class="mb-16">
+              <div class="off3-group">
+                <div class="off3-input-group">
+                  <input id="lastname" type="text" class="off3-input" v-model="lastname" placeholder=" ">
+                  <label for="lastname" class="off3-label">Фамилия <span class="input-required-label" v-if="!v$.lastname.$error || lastname === ''">*</span></label>
+                </div>
+                <div class="icon-clear" @click="lastname = ''" v-if="lastname"></div>
               </div>
-              <div class="icon-clear" @click="lastname = ''" v-if="lastname"></div>
+              <div v-if="v$.lastname.$error" class="error-message">Введите свою фамилию *</div>
             </div>
-
-            <div class="off3-group mb-16">
-              <div class="off3-input-group">
-                <input id="username" type="text" class="off3-input" v-model="username" placeholder=" ">
-                <label for="username" class="off3-label">Имя <span class="input-required-label">*</span></label>
+            <div class="mb-16">
+              <div class="off3-group">
+                <div class="off3-input-group">
+                  <input id="username" type="text" class="off3-input" v-model="username" placeholder=" ">
+                  <label for="username" class="off3-label">Имя <span class="input-required-label" v-if="!v$.username.$error || username === ''">*</span></label>
+                </div>
+                <div class="icon-clear" v-if="username"  @click="username = ''"></div>
               </div>
-              <div class="icon-clear" v-if="username"  @click="username = ''"></div>
+              <div v-if="v$.username.$error" class="error-message">Введите свою имя *</div>
             </div>
             <div class="off3-group mb-16">
               <div class="off3-input-group">
@@ -30,60 +35,69 @@
               </div>
               <div class="icon-clear" v-if="middlename"  @click="middlename = ''"></div>
             </div>
-            <div class="off3-group mb-16">
-              <div class="off3-input-group">
-                <input id="address" type="text" class="off3-input" v-model="address" placeholder=" ">
-                <label for="address" class="off3-label">Адрес <span class="input-required-label">*</span></label>
-              </div>
-              <div class="icon-clear" v-if="address"  @click="address = ''"></div>
-              <div class="icon-address-marker ml-16"></div>
-            </div>
-            <div class="date">
-              <div class="off3-group mb-16">
-                <div class="off3-input-group" @click="DatePickerActivate()">
-                  <input id="pickupDate" type="text" class="off3-input" placeholder=" " v-model="pickupDate" readonly>
-                  <label for="pickupDate" class="off3-label">Дата вывоза <span class="input-required-label">*</span></label>
+
+            <div class="mb-16">
+              <div class="off3-group">
+                <div class="off3-input-group">
+                  <input id="address" type="text" class="off3-input" v-model="address" placeholder=" ">
+                  <label for="address" class="off3-label">Адрес <span class="input-required-label" v-if="!v$.address.$error || address === ''">*</span></label>
                 </div>
-                <div class="icon-clear" v-if="pickupDate"  @click="pickupDate = ''"></div>
-                <div class="icon-calendar ml-16"></div>
+                <div class="icon-clear" v-if="address"  @click="address = ''"></div>
+                <div class="icon-address-marker ml-16"></div>
               </div>
-              <div class="date-picker" v-if="datePicker">
-                <date-picker mode="date" v-model="pickupDate" model-value/>
+              <div v-if="v$.address.$error" class="error-message">Введите адрес</div>
+            </div>
+            <div class="mb-16">
+              <div class="date">
+                <div class="off3-group mb-16" @click="DatePickerActivate()">
+                  <div class="off3-input-group">
+                    <input id="pickupDate" type="text" class="off3-input" placeholder=" " :value="pickupDate.toLocaleDateString()" readonly>
+                    <label for="pickupDate" class="off3-label">Дата вывоза <span class="input-required-label">*</span></label>
+                  </div>
+                  <div class="icon-clear" v-if="pickupDate"  @click="pickupDate = ''"></div>
+                  <div class="icon-calendar ml-16"></div>
+                </div>
+                <div class="date-picker" v-if="datePicker">
+                  <date-picker mode="date" v-model="pickupDate" model-value/>
+                </div>
               </div>
             </div>
-            <div class="time">
-              <div class="off3-group mb-16">
-                <div class="off3-input-group"  @click="TimePickerActivate()">
-                  <input id="pickupTime" type="text" class="off3-input" placeholder=" " v-model="pickupTime" readonly>
-                  <label for="pickupTime" class="off3-label">Желаемое время <span class="input-required-label">*</span></label>
+            <div class="mb-16">
+              <div class="time">
+                <div class="off3-group mb-16" @click="TimePickerActivate()">
+                  <div class="off3-input-group">
+                    <input id="pickupTime" type="text" class="off3-input" placeholder=" " :value="pickupTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})" readonly>
+                    <label for="pickupTime" class="off3-label">Желаемое время <span class="input-required-label">*</span></label>
+                  </div>
+                  <div class="icon-clear" v-if="pickupTime" @click="pickupTime = ''"></div>
+                  <div class="icon-clock ml-16"></div>
                 </div>
-                <div class="icon-clear" v-if="pickupTime" @click="pickupTime = ''"></div>
-                <div class="icon-clock ml-16"></div>
-              </div>
-              <div class="date-picker" v-if="datePicker">
-                <date-picker mode="time" v-model="pickupTime" model-value :isdisabled="false"/>
+                <div :class="'time-picker ' + timePicker">
+                  <date-picker mode="time" is24hr v-model="pickupTime" model-value/>
+                </div>
               </div>
             </div>
             <div class="off3-select mb-16">
               <p class="header-title text-start">Тип вторсырья <span class="input-required-label">*</span></p>
+              <div v-if="v$.types.$error" class="error-message">Выберите хотя бы один тип сырья</div>
               <div class="off3-select-group">
-                <input id="checkbox-2" class="checkbox-custom" name="checkbox-2" type="checkbox">
+                <input id="checkbox-2" class="checkbox-custom" name="checkbox-2" type="checkbox" value="Бумага" v-model="types">
                 <label for="checkbox-2" class="checkbox-custom-label">Бумага</label>
               </div>
               <div class="off3-select-group">
-                <input id="checkbox-3" class="checkbox-custom" name="checkbox-2" type="checkbox">
+                <input id="checkbox-3" class="checkbox-custom" name="checkbox-2" type="checkbox" value="Стекло" v-model="types">
                 <label for="checkbox-3" class="checkbox-custom-label">Стекло</label>
               </div>
               <div class="off3-select-group">
-                <input id="checkbox-4" class="checkbox-custom" name="checkbox-2" type="checkbox">
+                <input id="checkbox-4" class="checkbox-custom" name="checkbox-2" type="checkbox" value="Пластик" v-model="types">
                 <label for="checkbox-4" class="checkbox-custom-label">Пластик</label>
               </div>
               <div class="off3-select-group">
-                <input id="checkbox-5" class="checkbox-custom" name="checkbox-2" type="checkbox">
+                <input id="checkbox-5" class="checkbox-custom" name="checkbox-2" type="checkbox" value="Металл" v-model="types">
                 <label for="checkbox-5" class="checkbox-custom-label">Металл</label>
               </div>
               <div class="off3-select-group">
-                <input id="checkbox-6" class="checkbox-custom" name="checkbox-2" type="checkbox">
+                <input id="checkbox-6" class="checkbox-custom" name="checkbox-2" type="checkbox" value="Одежда, текстиль" v-model="types">
                 <label for="checkbox-6" class="checkbox-custom-label">Одежда, текстиль</label>
               </div>
             </div>
@@ -110,9 +124,11 @@
               <div class="off3-files">
               </div>
             </div>
-            <div class="mb-24"><router-link to="/applications/list">
-              <div class="btn">Отправить заявку</div>
-            </router-link></div>
+            <div class="mb-24">
+<!--              <router-link to="/applications/list">-->
+                <div class="btn" @click="formSubmit">Отправить заявку</div>
+<!--              </router-link-->
+            </div>
 
           </form>
 
@@ -133,8 +149,8 @@ import DetailComponent from "@/components/Applications/Details/DetailComponent";
 import NavigationComponent from "@/components/Navigation/NavigationComponent";
 import HeaderComponent from "@/components/Navigation/HeaderComponent.vue";
 import useVuelidate from '@vuelidate/core'
-import { required, email } from '@vuelidate/validators'
-
+import { required } from '@vuelidate/validators'
+import router from "@/router";
 
 export default {
   name: 'HandOverRecyclablesView',
@@ -147,40 +163,95 @@ export default {
   data() {
     return {
       datePicker: false,
+      timePicker: 'd-none',
       pickupDate: null,
       pickupTime: null,
       lastname: "",
       username: '',
       middlename: '',
+      types: [],
       address: '',
       capacity: '',
       phone: '',
     }
   },
 
-  setup () {
-    return { v$: useVuelidate() }
-  },
+  setup: () => ({ v$: useVuelidate() }),
 
   validations () {
     return {
-      lastname: { required }, // Matches this.lastName
-      username: { required }, // Matches this.firstName
+      lastname: { required },
+      username: { required },
+      address: { required },
+      capacity: { required },
+      phone: { required },
+      types: { required },
     }
   },
 
-
   methods: {
     DatePickerActivate(){
+      if(this.timePicker === 'd-block'){
+        this.timePicker = 'd-none'
+      }
       this.datePicker = this.datePicker === false ? true : false;
     },
 
     TimePickerActivate(){
-      $('.date-picker .vc-time-picker').removeClass('vc-invalid');
+      this.timePicker = this.timePicker === 'd-none' ? 'd-block' : 'd-none';
+      if(this.datePicker){
+        this.datePicker= false
+      }
+      $('.time-picker .vc-time-picker').removeClass('vc-invalid');
     },
 
-    formSubmit(){
-      console.log(111)
+    async formSubmit(){
+        const result = await this.v$.$validate()
+        if (!result) {
+          return false
+        }
+
+        await this.saveToDB()
+        await router.push("/applications/success")
+    },
+
+    saveToDB(){
+
+      let stringifyJson = window.localStorage.getItem('applications');
+      let dataArr = [];
+
+      if(stringifyJson !== '' || stringifyJson !== "{}"){
+         dataArr = JSON.parse(window.localStorage.getItem('applications')) || [];
+      }
+
+      dataArr.push({
+          id: Math. floor(Math.random() * 1000),
+          username: this.username || '',
+          middlename: this.middlename || '',
+          address: this.address || '',
+          pickupDate: this.pickupDate.toLocaleDateString() || '',
+          pickupTime: this.pickupTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) || '',
+          types: this.types || [],
+          capacity: this.capacity || '',
+          phone: this.phone || '',
+          status: 'status-expectation',
+          images: [
+            {
+              id: 1,
+              path: "https://wallpapercave.com/wp/wp11329095.jpg"
+            },
+            {
+              id: 2,
+              path: "https://wallpapercave.com/wp/wp11329095.jpg"
+            },
+            {
+              id: 2,
+              path: "https://wallpapercave.com/wp/wp11329095.jpg"
+            }
+          ]
+        });
+
+      window.localStorage.setItem('applications', JSON.stringify(dataArr));
     },
 
     resetInput(item) {
@@ -190,8 +261,8 @@ export default {
 
   created() {
     let day = new Date(Date.now());
-    this.pickupDate =  day.toLocaleDateString()
-    this.pickupTime =  day.toLocaleTimeString()
+    this.pickupDate =  day
+    this.pickupTime =  day
   },
 }
 </script>

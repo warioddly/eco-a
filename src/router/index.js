@@ -52,9 +52,9 @@ const routes = [
     component: ApplicationsListView
   },
   {
-    path: "/applications/list/show",
+    path: "/applications/list/:id",
     name: "applicationsShow",
-    component: ApplicationsShowView
+    component: ApplicationsShowView,
   },
   {
     path: "/applications/list/show/cancel",

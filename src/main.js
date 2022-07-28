@@ -7,7 +7,6 @@ import './assets/scss/_icons.scss'
 
 import Vue3TouchEvents from 'vue3-touch-events'
 import { Calendar, DatePicker } from 'v-calendar';
-
 const app = createApp(App)
     .use(store)
     .use(router)

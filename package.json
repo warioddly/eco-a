@@ -10,13 +10,15 @@
     "@vuelidate/validators": "^2.0.0-alpha.31",
     "axios": "^0.27.2",
     "core-js": "^3.8.3",
+    "fs": "^0.0.1-security",
     "jquery": "^3.6.0",
     "v-calendar": "^3.0.0-alpha.8",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vue-yandex-maps": "^0.12.3",
     "vue3-touch-events": "^4.1.0",
-    "vuex": "^4.0.0"
+    "vuex": "^4.0.0",
+    "write-json-file": "^5.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~5.0.0",
@@ -24,6 +26,7 @@
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "@vuelidate/core": "^2.0.0-alpha.43",
+    "browserify-fs": "^1.0.0",
     "qrcode.vue": "^3.3.3",
     "sass": "^1.32.7",
     "sass-loader": "^12.0.0",
@@ -34,5 +37,10 @@
     "last 2 versions",
     "not dead",
     "not ie 11"
-  ]
+  ],
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+  }
 }
