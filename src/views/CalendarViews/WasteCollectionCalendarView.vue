@@ -14,7 +14,7 @@
 
 <script>
 
-import DetailComponent from "@/components/MapObjects/Details/DetailComponent";
+import DetailComponent from "@/components/MapObjects/DetailComponent";
 import NavigationComponent from "@/components/Navigation/NavigationComponent";
 import HeaderComponent from "@/components/Navigation/HeaderComponent.vue";
 import 'v-calendar/dist/style.css';

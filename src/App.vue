@@ -1,12 +1,17 @@
 <template>
-  <div class="wrapper">
+  <div :class="$route.name == 'home' ? 'wrapper overflow-hidden' : 'wrapper'">
+
+    <header v-if="$route.name === 'home' || $route.name === 'objectList'">
+      <div class="list-or-map">
+        <router-link :to="{ name: 'home'}" class="header-link">Карта</router-link>
+        <router-link :to="{ name: 'objectList'}" class="header-link">Список</router-link>
+      </div>
+    </header>
 
     <router-view v-slot="{ Component }">
-      <transition
-          name="fade" mode="out-in"
-      >
+      <FadeInOut entry="left" exit="right" :duration="120" mode="out-in">
         <component :is="Component" />
-      </transition>
+      </FadeInOut>
     </router-view>
 
     <nav>
@@ -18,6 +23,8 @@
 <script>
 
 import NavigationComponent from "@/components/Navigation/NavigationComponent";
+import $ from 'jquery'
+import router from "@/router";
 
 export default {
 
@@ -31,52 +38,16 @@ export default {
     ymaps.ready(() => {
       this.$store.dispatch('initGeolocation')
     });
-  }
 
+    let greeted = JSON.parse(window.localStorage.getItem('greet22')) || null;
+    if(greeted == null){
+      router.push({ name: 'greeting' })
+      $('nav').hide()
+    }
+  },
 }
 </script>
 
 <style lang="scss">
-$duration: 0.5s;
-.transition {
-  overflow: hidden;
-}
-.router-view,
-.router-view-back {
-  &-enter-active,
-  &-leave-active {
-    position: fixed;
-    width: 100%;
-    background: white;
-    min-height: 100vh;
-    top: 0;
-  }
-}
-// router view
-.router-view-enter-active {
-  transition: transform $duration ease-in-out;
-  z-index: 2;
-  transform: translateX(100%);
-}
-.router-view-enter-to {
-  z-index: 2;
-  transform: translateX(0%);
-}
-.router-view-leave-active {
-  z-index: -1;
-}
-.router-view-leave-to {
-  z-index: -1;
-}
-// router view back
 
-.router-view-back-leave-active {
-  transition: transform $duration ease-in-out;
-  z-index: 2;
-  transform: translateX(0%);
-}
-.router-view-back-leave-to {
-  z-index: 2;
-  transform: translateX(100%);
-}
 </style>

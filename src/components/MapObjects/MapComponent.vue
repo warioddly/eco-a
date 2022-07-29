@@ -1,5 +1,5 @@
 <template>
-<div>
+  <div>
   <template v-if="this.mapInitialized">
     <div data-v-6ae436b8="" class="map-preloading">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 30"  xml:space="preserve">
@@ -27,7 +27,7 @@
 <script>
 
 import { mapGetters, mapMutations } from "vuex"
-import SearchComponent from "@/components/MapObjects/components/SearchComponent";
+import SearchComponent from "@/components/MapObjects/SearchComponent";
 import $ from "jquery";
 
 export default {

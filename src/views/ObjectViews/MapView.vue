@@ -1,20 +1,16 @@
 <template>
-    <header>
-      <list-or-map-component />
-    </header>
-    <main class="content">
-      <map-component />
-      <detail-component />
-    </main>
-
+  <main class="content">
+    <map-component />
+    <detail-component />
+  </main>
 </template>
 
 <script>
 
-import DetailComponent from "@/components/MapObjects/Details/DetailComponent";
-import MapComponent from "@/components/MapObjects/Map/MapComponent";
+import DetailComponent from "@/components/MapObjects/DetailComponent";
+import MapComponent from "@/components/MapObjects/MapComponent";
 import NavigationComponent from "@/components/Navigation/NavigationComponent";
-import ListOrMapComponent from "@/components/MapObjects/components/ListOrMapComponent";
+import ListOrMapComponent from "@/components/MapObjects/ListOrMapComponent";
 
 export default {
   name: 'HomeView',

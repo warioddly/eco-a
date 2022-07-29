@@ -2,7 +2,7 @@
   <main class="content application-show">
     <div id="applications-list-show">
       <div id="overlay"></div>
-      <header-component :route="'applicationsList'" :title="'№' + data.id" class="header-nav" />
+      <header-component :route="'applications'" :title="'№' + data.id" class="header-nav" />
       <div class="body">
         <carousel
             :items-to-show="1"
@@ -21,7 +21,9 @@
         <div class="info">
           <div class="status mb-10 mt-10">
             <p class="id">№{{ data.id }}</p>
-            <p :class="data.status + ' application-status'">Ожидание</p>
+            <p class="application-status status-expectation" v-if="data.status === 'status-expectation'">Ожидание</p>
+            <p class="application-status status-canceled" v-if="data.status === 'status-canceled'">Отменена</p>
+            <p class="application-status status-success" v-if="data.status === 'status-success'">Исполнена</p>
           </div>
           <div class="info-body">
             <p class="address mb-10">{{ data.address }}</p>
@@ -52,7 +54,7 @@
       </div>
       <div class="btns">
         <div class="get-qr-code mb-16" @click="generateQrCode">Показать QR-код</div>
-        <router-link :to="{name: 'applicationsCancelRequest'}" class="cancel">
+        <router-link :to="{name: 'applicationsCancelRequest', params: { id: id }}" class="cancel" v-if="data.status !== 'status-canceled'">
           <div class="btn-danger-outline">Отменить заявку</div>
         </router-link>
       </div>
@@ -63,8 +65,7 @@
 
 <script>
 
-import DetailComponent from "@/components/Applications/Details/DetailComponent";
-import NavigationComponent from "@/components/Navigation/NavigationComponent";
+import DetailComponent from "@/components/Applications/DetailComponent";
 import { Carousel, Slide, Pagination } from 'vue3-carousel';
 import HeaderComponent from "@/components/Navigation/HeaderComponent.vue";
 import 'vue3-carousel/dist/carousel.css';
@@ -77,7 +78,6 @@ export default {
     Carousel,
     Slide,
     Pagination,
-    NavigationComponent,
     DetailComponent
   },
 
@@ -100,7 +100,7 @@ export default {
         item.id = item.id.toString();
         return item.id.includes(id)
     })
-}
+  }
 },
 
   created() {

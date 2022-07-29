@@ -1,8 +1,24 @@
 <template>
-  <transition name="slide-fade">
-
-    <main class="content">
-    <div id="applications-list">
+  <main class="content" >
+    <div id="applications" v-if="data == null">
+      <header-component title="Заявки" class="header-nav"/>
+      <div class="body">
+        <div>
+          <div class="ico icon-application-search application-search-ico"></div>
+          <p class="no-applications text-title text-center pd-15">Нет заявок</p>
+          <p class="no-applications-secondary text-secondary text-center pd-15">У вас еще нет ни одной заявки на вывоз мусора</p>
+          <div class="mg-15">
+            <router-link :to="{name: 'handOverRecyclables'}" class="btn create-application-btn">
+              Создать заявку
+            </router-link>
+          </div>
+        </div>
+        <router-link :to="{name: 'handOverRecyclables'}" class="float-btn">
+          <div class="circle-btn icon-add-btn"></div>
+        </router-link>
+      </div>
+    </div>
+    <div id="applications-list" v-else>
       <header-component route="home" title="Заявки" class="header-nav" />
       <div class="body">
         <div class="list-items" v-for="item in data">
@@ -13,7 +29,9 @@
                 <div class="list-info">
                   <div class="list-header">
                     <p class="item-number">№{{ item.id }}</p>
-                    <p :class="'item-status ' + item.status">Ожидание</p>
+                    <p class="item-status status-expectation" v-if="item.status === 'status-expectation'">Ожидание</p>
+                    <p class="item-status status-canceled" v-if="item.status === 'status-canceled'">Отменена</p>
+                    <p class="item-status status-success" v-if="item.status === 'status-success'">Исполнена</p>
                   </div>
                   <div class="list-body">
                     <p class="item-address mb-10">{{ item.address }}</p>
@@ -38,34 +56,30 @@
         </router-link>
       </div>
     </div>
-    <detail-component/>
   </main>
-
-  </transition>
-
 </template>
 
 <script>
 
-import DetailComponent from "@/components/Applications/Details/DetailComponent";
+import DetailComponent from "@/components/Applications/DetailComponent";
 import NavigationComponent from "@/components/Navigation/NavigationComponent";
-import HeaderComponent from "@/components/Navigation/HeaderComponent.vue";
+import HeaderComponent from "@/components/Navigation/HeaderComponent";
 
 export default {
-  name: 'ApplicationsListView',
+  name: 'ApplicationsView',
   components: {
     NavigationComponent,
     DetailComponent,
-    HeaderComponent
+    HeaderComponent,
   },
 
   data() {
     return {
-      data: [],
+      data: null
     }
   },
 
-  created() {
+  mounted() {
     this.data = JSON.parse(window.localStorage.getItem('applications'));
     if(this.data != null){
       this.data = this.data.reverse()

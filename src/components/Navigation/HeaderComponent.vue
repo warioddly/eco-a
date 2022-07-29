@@ -1,10 +1,12 @@
 <template>
   <div class="header">
-    <router-link :to="{ name: route}">
+    <router-link :to="{ name: route }">
       <div class="icon-back"></div>
     </router-link>
     <p class="header-title">{{ title }}</p>
-    <div class="icon-user-profile"></div>
+    <router-link :to="{ name: 'profile' }">
+      <div class="icon-user-profile"></div>
+    </router-link>
   </div>
 </template>
 

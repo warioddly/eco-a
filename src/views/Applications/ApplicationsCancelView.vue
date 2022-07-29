@@ -1,7 +1,7 @@
 <template>
   <main class="content">
     <div id="applications">
-      <header-component title=" " class="header-nav"/>
+      <header-component :route="'applications'" title=" " class="header-nav"/>
       <div class="body">
         <div>
           <div class="ico icon-application-success application-search-ico"></div>
@@ -15,14 +15,12 @@
 
 <script>
 
-import DetailComponent from "@/components/Applications/Details/DetailComponent";
-import NavigationComponent from "@/components/Navigation/NavigationComponent";
+import DetailComponent from "@/components/Applications/DetailComponent";
 import HeaderComponent from "@/components/Navigation/HeaderComponent.vue";
 
 export default {
   name: 'ApplicationsSuccessView',
   components: {
-    NavigationComponent,
     DetailComponent,
     HeaderComponent
   }

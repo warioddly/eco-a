@@ -1,27 +1,30 @@
 <template>
-  <header>
-    <list-or-map-component />
-  </header>
   <main class="content">
-    <list-component />
+    <div id="list">
+      <div id="overlay"></div>
+      <search-component />
+      <list-block-component/>
+    </div>
     <detail-component />
   </main>
 </template>
 
 <script>
 
-import DetailComponent from "@/components/MapObjects/Details/DetailComponent";
+import DetailComponent from "@/components/MapObjects/DetailComponent";
 import NavigationComponent from "@/components/Navigation/NavigationComponent";
-import ListOrMapComponent from "@/components/MapObjects/components/ListOrMapComponent";
-import ListComponent from "@/components/MapObjects/List/ListComponent";
+import ListOrMapComponent from "@/components/MapObjects/ListOrMapComponent";
+import SearchComponent from "@/components/MapObjects/SearchComponent";
+import ListBlockComponent from "@/components/MapObjects/ListBlockComponent";
 
 export default {
   name: 'HomeView',
   components: {
-    ListComponent,
     NavigationComponent,
     ListOrMapComponent,
     DetailComponent,
+    SearchComponent,
+    ListBlockComponent
   }
 }
 </script>

@@ -16,7 +16,7 @@
         </router-link>
       </li>
       <li class="item">
-        <router-link  to="/" :class="'nav-item-link ' + [$route.fullPath === '/list' ? 'router-link-active': ' ']">
+        <router-link  to="/" :class="'nav-item-link ' + [$route.name === 'objectList' ? 'router-link-active': ' ']">
           <div class="ico icon-nav-marker-pin"></div>
           <p>Объекты</p>
         </router-link>

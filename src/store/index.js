@@ -105,6 +105,7 @@ export default createStore({
       await $.ajax({
         url: '/db/data.json'
       }).done((data) => {
+        console.log(data);
         context.commit('SET_MARKERS', data)
         context.commit('SET_SEARCH_MARKER', data)
       });

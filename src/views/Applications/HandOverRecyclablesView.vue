@@ -1,7 +1,7 @@
 <template>
   <main class="content">
     <div id="hand-over-recyclables">
-      <header-component :route="'applicationsList'" title="Заявки" class="header-nav"/>
+      <header-component :route="'applications'" title="Заявки" class="header-nav"/>
       <div class="body pd-15">
         <p class="header-text title">Сдать вторсырье на переработку</p>
 
@@ -140,8 +140,7 @@
 <script>
 
 import $ from "jquery"
-import DetailComponent from "@/components/Applications/Details/DetailComponent";
-import NavigationComponent from "@/components/Navigation/NavigationComponent";
+import DetailComponent from "@/components/Applications/DetailComponent";
 import HeaderComponent from "@/components/Navigation/HeaderComponent.vue";
 import useVuelidate from '@vuelidate/core'
 import { required } from '@vuelidate/validators'
@@ -150,7 +149,6 @@ import router from "@/router";
 export default {
   name: 'HandOverRecyclablesView',
   components: {
-    NavigationComponent,
     DetailComponent,
     HeaderComponent,
   },
@@ -220,7 +218,7 @@ export default {
       }
 
       dataArr.push({
-          id: Math. floor(Math.random() * 1000),
+          id: Math. floor(Math.random() * 9999999),
           username: this.username || '',
           middlename: this.middlename || '',
           address: this.address || '',

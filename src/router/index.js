@@ -5,10 +5,11 @@ import WasteCollectionCalendarView from "@/views/CalendarViews/WasteCollectionCa
 import ApplicationsView from "@/views/Applications/ApplicationsView";
 import HandOverRecyclablesView from "@/views/Applications/HandOverRecyclablesView";
 import ApplicationsSuccessView from "@/views/Applications/ApplicationsSuccessView";
-import ApplicationsListView from "@/views/Applications/ApplicationsListView";
 import ApplicationsShowView from "@/views/Applications/ApplicationsShowView";
 import ApplicationsCancelView from "@/views/Applications/ApplicationsCancelView";
 import ApplicationsCancelRequestView from "@/views/Applications/ApplicationsCancelRequestView";
+import ProfileView from "@/views/Profile/ProfileView";
+import GreetingPageView from "@/views/GreetingPage/GreetingPageView";
 
 const routes = [
   {
@@ -17,8 +18,8 @@ const routes = [
     component: MapView,
   },
   {
-    path: '/list',
-    name: 'list',
+    path: '/objects/list',
+    name: 'objectList',
     component: ListView
   },
   {
@@ -42,15 +43,9 @@ const routes = [
     component: ApplicationsSuccessView
   },
   {
-    path: "/applications/cancel",
+    path: "/applications/canceled",
     name: "applicationsCancel",
     component: ApplicationsCancelView
-  },
-  {
-    path: "/applications/list",
-    name: "applicationsList",
-    component: ApplicationsListView,
-    meta: { transitionName: 'slide' },
   },
   {
     path: "/applications/list/:id",
@@ -58,15 +53,29 @@ const routes = [
     component: ApplicationsShowView,
   },
   {
-    path: "/applications/list/show/cancel",
+    path: "/applications/list/:id/cancel",
     name: "applicationsCancelRequest",
     component: ApplicationsCancelRequestView
   },
+  {
+    path: "/profile",
+    name: "profile",
+    component: ProfileView
+  },
+  {
+    path: "/greeting",
+    name: "greeting",
+    component: GreetingPageView
+  },
+
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0 }
+  },
 })
 
 export default router
