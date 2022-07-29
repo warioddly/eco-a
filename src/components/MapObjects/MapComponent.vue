@@ -37,7 +37,7 @@ export default {
     SearchComponent
   },
 
-  computed: mapGetters(['markers', 'mapInitialized']),
+  computed: mapGetters(['markers', 'mapInitialized', 'selectedMarker', 'geolocation']),
 
   data () {
     return {
@@ -56,11 +56,24 @@ export default {
 
   methods: {
     run(){
+      if(Object.keys(map).length !== 0){
+        $('#map').empty();
+      }
+
       map = new ymaps.Map('map', {
           zoom: 10,
           controls: [],
           center: [55.831903, 37.411961]
         })
+
+      if(this.selectedMarker.address !== 'Empty'){
+        console.log(this.selectedMarker.address);
+        multiRoute = new ymaps.multiRouter.MultiRoute({
+          referencePoints: [this.geolocation, this.selectedMarker.geometry.coordinates],
+          params: { routingMode: 'pedestrian' } }, { boundsAutoApply: true });
+        map.geoObjects.add(multiRoute);
+      }
+
 
       this.markerInitialize();
       // this.getLocation();

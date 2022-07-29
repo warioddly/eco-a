@@ -2,10 +2,10 @@
   <div class="navigation">
     <ul class="nav-items">
       <li class="item">
-        <router-link to="/" class="nav-item-link">
+        <div  class="nav-item-link">
           <div class="ico icon-nav-redeem"></div>
           <p>Обменять</p>
-        </router-link>
+        </div>
       </li>
       <li class="item">
         <router-link to="/applications" :class="'nav-item-link' + [$route.fullPath === '/applications/list' ? ' router-link-active': ' ']
@@ -28,10 +28,10 @@
         </router-link>
       </li>
       <li class="item">
-        <router-link to="/" class="nav-item-link">
+        <div class="nav-item-link">
           <div class="ico icon-nav-menu"></div>
           <p>Еще</p>
-        </router-link>
+        </div>
       </li>
     </ul>
     <div class="bottom-line" v-touch:swipe="onSwipeUp()">

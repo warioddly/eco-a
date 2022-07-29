@@ -10,6 +10,7 @@ import ApplicationsCancelView from "@/views/Applications/ApplicationsCancelView"
 import ApplicationsCancelRequestView from "@/views/Applications/ApplicationsCancelRequestView";
 import ProfileView from "@/views/Profile/ProfileView";
 import GreetingPageView from "@/views/GreetingPage/GreetingPageView";
+import RegisterView from "@/views/Auth/RegisterView";
 
 const routes = [
   {
@@ -67,7 +68,11 @@ const routes = [
     name: "greeting",
     component: GreetingPageView
   },
-
+  {
+    path: "/register",
+    name: "registration",
+    component: RegisterView
+  },
 ]
 
 const router = createRouter({

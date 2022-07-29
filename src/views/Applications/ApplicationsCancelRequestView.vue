@@ -2,7 +2,7 @@
   <main class="content">
     <div id="applications-cancel-request">
       <div class="header">
-        <router-link :to="{name: 'applicationsShow', params: { id: this.$route.params.id }}">
+        <router-link :to="{ name: 'applicationsShow', params: { id: this.$route.params.id }}">
           <div class="icon-back"></div>
         </router-link>
         <p class="header-title">№{{ this.$route.params.id }}</p>

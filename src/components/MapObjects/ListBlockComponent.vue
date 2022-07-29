@@ -1,5 +1,8 @@
 <template>
   <div class="list-blocks">
+    <div class="text-center" v-if="this.filteredMarkers.length === 0">
+      <p class="text-secondary">По вашему запросу нечего не найдено!</p>
+    </div>
     <div class="scrollable-block information" v-for="(item, index) in this.filteredMarkers" :key="index">
       <div class="list" @click="setSelectedMarker(item)" data-id="{{ item.id }}">
         <div class="info">

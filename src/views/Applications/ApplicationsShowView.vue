@@ -12,7 +12,7 @@
             snapAlign="center"
             class="carousel-container" >
           <slide v-for="slide in data.images" :key="slide">
-            <img :src="slide.path" alt="" class="carousel-item-image">
+            <img src="@/assets/images/application-images/image3.png" alt="" class="carousel-item-image">
           </slide>
           <template #addons>
             <pagination class="carousel-pagination"/>

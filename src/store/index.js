@@ -13,6 +13,7 @@ export default createStore({
     },
     filteredMarkers: {},
     toRoute: {},
+    userRegion: '',
   },
 
   getters: {
@@ -34,6 +35,10 @@ export default createStore({
 
     geolocation(state){
       return state.userGeoLocation;
+    },
+
+    getSelectedRegion(state){
+      return state.userRegion;
     }
   },
 
@@ -96,16 +101,18 @@ export default createStore({
       }
 
       state.filteredMarkers = filtered;
-    }
+    },
+
+    SET_USER_REGION(state, payload) {
+      state.userRegion = payload;
+    },
   },
 
   actions: {
-
     async initMarkers(context){
       await $.ajax({
         url: '/db/data.json'
       }).done((data) => {
-        console.log(data);
         context.commit('SET_MARKERS', data)
         context.commit('SET_SEARCH_MARKER', data)
       });

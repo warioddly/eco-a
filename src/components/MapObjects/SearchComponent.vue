@@ -4,8 +4,11 @@
       <div class="icon-search"></div>
       <input type="text" class="search-input" id='search' v-model="search" @input="searchFunction()" placeholder="Найти по адресу" />
       <div class="icon-clear" @click="clearInput" v-if="search"></div>
-      <div id="dropdown-list" v-if="search !== '' && currentRoute === '/'">
+        <div id="dropdown-list" v-if="search !== '' && currentRoute === '/'">
         <div class="dropdown-container">
+          <div v-if="this.filteredMarkers.length === 0">
+              <p class="text-secondary">По вашему запросу нечего не найдено!</p>
+          </div>
           <div class="information" v-for="(item, index) in this.filteredMarkers" :key="index">
             <div class="list" @click="setSelectedMarker(item)" data-id="{{ item.id }}">
               <div class="info">

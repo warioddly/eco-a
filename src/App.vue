@@ -39,7 +39,7 @@ export default {
       this.$store.dispatch('initGeolocation')
     });
 
-    let greeted = JSON.parse(window.localStorage.getItem('greet22')) || null;
+    let greeted = JSON.parse(window.localStorage.getItem('greet')) || null;
     if(greeted == null){
       router.push({ name: 'greeting' })
       $('nav').hide()
@@ -49,5 +49,4 @@ export default {
 </script>
 
 <style lang="scss">
-
 </style>

@@ -79,22 +79,39 @@ export default {
       $('#overlay').removeClass('active');
       this.SET_MAP_INIT(true);
 
-      map.geoObjects.removeAll();
-      map.geoObjects.add(objectManager);
+      // map.geoObjects.removeAll();
+      // map.geoObjects.add(objectManager);
 
-      if(this.$router.currentRoute.path !== '/'){
-        router.replace('/');
-        await new Promise(resolve => setTimeout(resolve, 1000));
+      if(this.$route.fullPath === '/'){
+        if(Object.keys(map).length !== 0){
+          $('#map').empty();
+        }
+
+        map = new ymaps.Map('map', {
+          zoom: 10,
+          controls: [],
+          center: [55.831903, 37.411961]
+        })
+
+        if(this.selectedMarker.address !== 'Empty'){
+          console.log(this.selectedMarker.address);
+          multiRoute = new ymaps.multiRouter.MultiRoute({
+            referencePoints: [this.geolocation, this.selectedMarker.geometry.coordinates],
+            params: { routingMode: 'pedestrian' } }, { boundsAutoApply: true });
+          map.geoObjects.add(multiRoute);
+          map.geoObjects.add(objectManager);
+        }
       }
 
-      multiRoute = new ymaps.multiRouter.MultiRoute({
-        referencePoints: [this.geolocation, this.selectedMarker.geometry.coordinates],
-        params: { routingMode: 'pedestrian' } }, { boundsAutoApply: true });
-      map.geoObjects.add(multiRoute);
+      if(this.$route.fullPath !== '/'){
+        router.replace('/');
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        return
+      }
 
       setTimeout(() => {
         this.SET_MAP_INIT(false);
-      }, 5000)
+      }, 3000)
     },
 
     ...mapMutations(["SET_SELECTED_MARKER", 'SET_MAP_INIT']),

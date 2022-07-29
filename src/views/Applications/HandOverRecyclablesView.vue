@@ -7,8 +7,9 @@
 
         <form action="#" method="POST">
 
+
           <div class="mb-16">
-            <div class="off3-group">
+            <div :class="'off3-group '   + [v$.lastname.$error ? ' in-invalid' : ' ']">
               <div class="off3-input-group">
                 <input id="lastname" type="text" class="off3-input" v-model="lastname" placeholder=" ">
                 <label for="lastname" class="off3-label">Фамилия <span class="input-required-label" v-if="!v$.lastname.$error || lastname === ''">*</span></label>
@@ -18,15 +19,16 @@
             <div v-if="v$.lastname.$error" class="error-message">Введите свою фамилию *</div>
           </div>
           <div class="mb-16">
-            <div class="off3-group">
+            <div :class="'off3-group '   + [v$.username.$error ? ' in-invalid' : ' ']">
               <div class="off3-input-group">
                 <input id="username" type="text" class="off3-input" v-model="username" placeholder=" ">
                 <label for="username" class="off3-label">Имя <span class="input-required-label" v-if="!v$.username.$error || username === ''">*</span></label>
               </div>
-              <div class="icon-clear" v-if="username"  @click="username = ''"></div>
+              <div class="icon-clear" @click="username = ''" v-if="username"></div>
             </div>
-            <div v-if="v$.username.$error" class="error-message">Введите свою имя *</div>
+            <div v-if="v$.username.$error" class="error-message">Введите своe имя *</div>
           </div>
+
           <div class="off3-group mb-16">
             <div class="off3-input-group">
               <input id="middlename" type="text" class="off3-input" v-model="middlename" placeholder=" ">
@@ -36,24 +38,24 @@
           </div>
 
           <div class="mb-16">
-            <div class="off3-group">
+            <div :class="'off3-group '   + [v$.address.$error ? ' in-invalid' : ' ']">
               <div class="off3-input-group">
                 <input id="address" type="text" class="off3-input" v-model="address" placeholder=" ">
                 <label for="address" class="off3-label">Адрес <span class="input-required-label" v-if="!v$.address.$error || address === ''">*</span></label>
               </div>
-              <div class="icon-clear" v-if="address"  @click="address = ''"></div>
-              <div class="icon-address-marker ml-16"></div>
+              <div class="icon-clear" @click="address = ''" v-if="address"></div>
             </div>
-            <div v-if="v$.address.$error" class="error-message">Введите адрес</div>
+            <div v-if="v$.address.$error" class="error-message">Адрес *</div>
           </div>
+
           <div class="mb-16">
             <div class="date">
               <div class="off3-group mb-16" @click="DatePickerActivate()">
                 <div class="off3-input-group">
                   <input id="pickupDate" type="text" class="off3-input" placeholder=" " :value="pickupDate.toLocaleDateString()" readonly>
-                  <label for="pickupDate" class="off3-label">Дата вывоза <span class="input-required-label">*</span></label>
+                  <label for="pickupDate" class="off3-label">Дата вывоза</label>
                 </div>
-                <div class="icon-clear" v-if="pickupDate"  @click="pickupDate = ''"></div>
+<!--                <div class="icon-clear" v-if="pickupDate"  @click="pickupDate = ''"></div>-->
                 <div class="icon-calendar ml-16"></div>
               </div>
               <div class="date-picker" v-if="datePicker">
@@ -66,9 +68,9 @@
               <div class="off3-group mb-16" @click="TimePickerActivate()">
                 <div class="off3-input-group">
                   <input id="pickupTime" type="text" class="off3-input" placeholder=" " :value="pickupTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})" readonly>
-                  <label for="pickupTime" class="off3-label">Желаемое время <span class="input-required-label">*</span></label>
+                  <label for="pickupTime" class="off3-label">Желаемое время</label>
                 </div>
-                <div class="icon-clear" v-if="pickupTime" @click="pickupTime = ''"></div>
+<!--                <div class="icon-clear" v-if="pickupTime" @click="pickupTime = ''"></div>-->
                 <div class="icon-clock ml-16"></div>
               </div>
               <div :class="'time-picker ' + timePicker">
@@ -100,20 +102,29 @@
               <label for="checkbox-6" class="checkbox-custom-label">Одежда, текстиль</label>
             </div>
           </div>
-          <div class="off3-group mb-16">
-            <div class="off3-input-group">
-              <input id="capacity" type="text" class="off3-input" v-model="capacity" placeholder=" ">
-              <label for="capacity" class="off3-label">Примерный вес/объем/кол-во <span class="input-required-label">*</span></label>
+
+          <div class="mb-16">
+            <div :class="'off3-group '   + [v$.capacity.$error ? ' in-invalid' : ' ']">
+              <div class="off3-input-group">
+                <input id="capacity" type="text" class="off3-input" v-model="capacity" placeholder=" ">
+                <label for="capacity" class="off3-label">Примерный вес/объем/кол-во <span class="input-required-label" v-if="!v$.capacity.$error || capacity === ''">*</span></label>
+              </div>
+              <div class="icon-clear" @click="capacity = ''" v-if="capacity"></div>
             </div>
-            <div class="icon-clear" v-if="capacity"  @click="capacity = ''"></div>
+            <div v-if="v$.capacity.$error" class="error-message">Поле не должен быть пустым</div>
           </div>
-          <div class="off3-group mb-16">
-            <div class="off3-input-group">
-              <input id="phone" type="text" class="off3-input" v-model="phone" placeholder=" ">
-              <label for="phone" class="off3-label">Контактный телефон <span class="input-required-label">*</span></label>
+
+          <div class="mb-16">
+            <div :class="'off3-group '   + [v$.phone.$error ? ' in-invalid' : ' ']">
+              <div class="off3-input-group">
+                <input id="phone" type="text" class="off3-input" v-model="phone" placeholder=" ">
+                <label for="phone" class="off3-label">Контактный телефон <span class="input-required-label" v-if="!v$.phone.$error || phone === ''">*</span></label>
+              </div>
+              <div class="icon-clear" @click="phone = ''" v-if="phone"></div>
             </div>
-            <div class="icon-clear" v-if="phone"  @click="phone = ''"></div>
+            <div v-if="v$.phone.$error" class="error-message">Введите контактный номер</div>
           </div>
+
           <div class="off3-upload-file mb-24">
             <p class="header-title text-start mb-24">Добавить фото/видео <span class="input-required-label">*</span></p>
             <label for="upload-photo" class="upload-photo-label">
