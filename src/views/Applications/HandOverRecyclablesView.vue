@@ -144,7 +144,6 @@
 
       </div>
     </div>
-    <detail-component/>
   </main>
 </template>
 
