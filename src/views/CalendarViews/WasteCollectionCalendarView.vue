@@ -1,20 +1,15 @@
 <template>
-  <div class="wrapper">
-    <main class="content">
-      <div id="calendar">
-        <header-component title="Календарь сбора отходов" class="header-nav"/>
-        <div class="body">
-          <div class="calendar">
-            <Calendar is-expanded :attributes="attributes" />
-          </div>
+  <main class="content">
+    <div id="calendar">
+      <header-component title="Календарь сбора отходов" class="header-nav"/>
+      <div class="body">
+        <div class="calendar">
+          <Calendar is-expanded :attributes="attributes" />
         </div>
       </div>
-      <detail-component/>
-    </main>
-    <nav>
-      <navigation-component/>
-    </nav>
-  </div>
+    </div>
+    <detail-component/>
+  </main>
 </template>
 
 <script>

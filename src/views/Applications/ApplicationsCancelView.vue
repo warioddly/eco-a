@@ -1,21 +1,16 @@
 <template>
-  <div class="wrapper">
-    <main class="content">
-      <div id="applications">
-        <header-component title=" " class="header-nav"/>
-        <div class="body">
-          <div>
-            <div class="ico icon-application-success application-search-ico"></div>
-            <p class="no-applications text-title text-center pd-15">Ваша заявка отменена</p>
-          </div>
+  <main class="content">
+    <div id="applications">
+      <header-component title=" " class="header-nav"/>
+      <div class="body">
+        <div>
+          <div class="ico icon-application-success application-search-ico"></div>
+          <p class="no-applications text-title text-center pd-15">Ваша заявка отменена</p>
         </div>
       </div>
-      <detail-component/>
-    </main>
-    <nav>
-      <navigation-component/>
-    </nav>
-  </div>
+    </div>
+    <detail-component/>
+  </main>
 </template>
 
 <script>

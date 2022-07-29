@@ -49,7 +49,8 @@ const routes = [
   {
     path: "/applications/list",
     name: "applicationsList",
-    component: ApplicationsListView
+    component: ApplicationsListView,
+    meta: { transitionName: 'slide' },
   },
   {
     path: "/applications/list/:id",

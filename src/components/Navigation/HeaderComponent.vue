@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <router-link to="/">
+    <router-link :to="{ name: route}">
       <div class="icon-back"></div>
     </router-link>
     <p class="header-title">{{ title }}</p>
@@ -12,7 +12,7 @@
 
 export default {
   name: 'header-component',
-  props: ['title'],
+  props: ['title', 'route'],
 }
 </script>
 

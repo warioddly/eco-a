@@ -1,16 +1,11 @@
 <template>
-  <div class="wrapper">
-    <header>
-      <list-or-map-component />
-    </header>
-    <main class="content">
-      <list-component />
-    </main>
-    <nav>
-      <navigation-component/>
-      <detail-component />
-    </nav>
-  </div>
+  <header>
+    <list-or-map-component />
+  </header>
+  <main class="content">
+    <list-component />
+    <detail-component />
+  </main>
 </template>
 
 <script>

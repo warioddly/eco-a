@@ -1,25 +1,20 @@
 <template>
-  <div class="wrapper">
-    <main class="content">
-      <div id="applications-cancel-request">
-        <header-component title="№325125" class="header-nav" />
-        <div class="body">
-          <div class="form-group">
-            <label for="cancel-input">Укажите причину отмены</label>
-            <textarea name="cancel" id="cancel-input" rows="20"></textarea>
-          </div>
-        </div>
-        <div class="btns">
-          <div class="get-qr-code mb-16" @click="generateQrCode">Показать QR-код</div>
-          <div class="btn-danger-outline">Отменить заявку</div>
+  <main class="content">
+    <div id="applications-cancel-request">
+      <header-component title="№325125" class="header-nav" />
+      <div class="body">
+        <div class="form-group">
+          <label for="cancel-input">Укажите причину отмены</label>
+          <textarea name="cancel" id="cancel-input" rows="20"></textarea>
         </div>
       </div>
-      <detail-component/>
-    </main>
-    <nav>
-      <navigation-component/>
-    </nav>
-  </div>
+      <div class="btns">
+        <div class="get-qr-code mb-16" @click="generateQrCode">Показать QR-код</div>
+        <div class="btn-danger-outline">Отменить заявку</div>
+      </div>
+    </div>
+    <detail-component/>
+  </main>
 </template>
 
 <script>

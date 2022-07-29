@@ -8,7 +8,9 @@
         </router-link>
       </li>
       <li class="item">
-        <router-link to="/applications" class="nav-item-link">
+        <router-link to="/applications" :class="'nav-item-link' + [$route.fullPath === '/applications/list' ? ' router-link-active': ' ']
+         + [$route.name === 'applicationsSuccess' ? ' router-link-active': ' '] + [$route.name === 'applicationsShow' ? ' router-link-active': ' ']
+         + [$route.name === 'handOverRecyclables' ? ' router-link-active': ' '] + [$route.name === 'applicationsCancel' ? ' router-link-active': ' ']">
           <div class="ico icon-nav-waste"></div>
           <p>Заявки</p>
         </router-link>

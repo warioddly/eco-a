@@ -1,5 +1,4 @@
 <template>
-  <div class="wrapper">
     <main class="content">
       <div id="applications">
         <header-component title="Заявки" class="header-nav"/>
@@ -21,10 +20,6 @@
       </div>
       <detail-component/>
     </main>
-    <nav>
-      <navigation-component/>
-    </nav>
-  </div>
 </template>
 
 <script>
@@ -44,6 +39,7 @@ export default {
 
   created() {
     let data = JSON.parse(window.localStorage.getItem('applications'));
+
     if(data !== null){
       router.push("/applications/list")
     }

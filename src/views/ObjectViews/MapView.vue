@@ -1,5 +1,4 @@
 <template>
-  <div class="wrapper">
     <header>
       <list-or-map-component />
     </header>
@@ -7,10 +6,7 @@
       <map-component />
       <detail-component />
     </main>
-    <nav>
-      <navigation-component/>
-    </nav>
-  </div>
+
 </template>
 
 <script>
