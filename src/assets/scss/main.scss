@@ -869,6 +869,75 @@ html, body {
         }
       }
 
+      // AUTH VIEWS
+
+      .region-detail {
+
+        .search-controllers{
+          position: inherit;
+          z-index: 1;
+          display: flex;
+          padding: 25px 15px;
+          font-weight: 400;
+          font-size: 13px;
+          line-height: 18px;
+          color: #B3B6B8;
+
+
+          .search{
+            background: #FFFFFF;
+            border: 1px solid #E2E4E5;
+            width: 100%;
+            height: 40px;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0);
+            border-radius: 70px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin-right: 10px;
+            position: inherit !important;
+
+            animation-name: boxToShadow;
+            animation-duration: 1s;
+
+            .icon-search{
+              margin-right: 5px;
+            }
+
+            .search-input{
+              width: 100%;
+              outline: 0;
+              border:none;
+
+              &:focus{
+                border: none;
+                outline: 0;
+              }
+            }
+          }
+        }
+
+
+        .items{
+          overflow: scroll;
+          height: 75vh;
+
+          .item-list{
+            padding: 10px 15px;
+            border-bottom: 1px solid #F2FAFF;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 152.6%;
+            letter-spacing: 0.02em;
+            color: #414141;
+
+            &:active{
+              background-color: $hoverGreyColor;
+            }
+          }
+        }
+      }
+
     }
 
     nav {
@@ -1497,6 +1566,7 @@ html, body {
     display: flex;
     text-align: center;
     color: #000000;
+    transition: .3s;
   }
 
   .circle-btn{
@@ -1519,7 +1589,7 @@ html, body {
   .header-nav{
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 1;
     background-color: white;
   }
 
@@ -1540,7 +1610,7 @@ html, body {
     display: block;
     position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 2;
     background-color: rgba(0, 0, 0, 0.4);
     opacity: 0.7;
     height: 100vh;

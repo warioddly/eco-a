@@ -26,7 +26,7 @@
         <template #addons >
           <div class="buttons">
             <pagination class="carousel-pagination"/>
-            <div class="btn btn-secondary" @click="nextSlider">Далее</div>
+            <div class="btn btn-secondary" @click="nextSlider">{{ btnText }}</div>
             <div class="skip" @click="skip">Пропустить</div>
           </div>
         </template>
@@ -53,18 +53,45 @@ export default {
     Navigation,
   },
 
+  data() {
+    return {
+      counter: 0,
+      btnText: 'Далее',
+    }
+  },
+
   methods: {
     nextSlider(){
-     this.$refs.myCarousel.next()
+      ++this.counter
+      this.$refs.myCarousel.next()
+
+      if(this.counter === 3){
+        $('.buttons .btn-secondary').addClass('next-step')
+        this.btnText = 'Зарегистрироваться'
+      }
+
+      if(this.counter >= 4){
+        window.localStorage.setItem('greet', JSON.stringify([{ greeted: true }]));
+        router.push({ name: 'registration' });
+      }
     },
+
     skip(){
+      this.$refs.myCarousel.slideTo(3)
       window.localStorage.setItem('greet', JSON.stringify([{ greeted: true }]));
-      router.push({ name: 'home' });
-      $('nav').show();
+      $('.buttons .btn-secondary').addClass('next-step')
+      this.btnText = 'Зарегистрироваться'
+      this.counter = 4
     },
   }
 }
 </script>
 
 <style scoped lang="scss">
+
+.next-step{
+  background-color: #6958D0 !important;
+  color: white !important;
+}
+
 </style>

@@ -1,5 +1,6 @@
 <template>
   <main class="content register">
+      <div id="overlay"></div>
     <div id="register">
       <header-component :route="'home'" title="Регистрация" class="header-nav"/>
       <div class="body pd-15 mt-20">
@@ -7,11 +8,11 @@
           <div class="mb-16 off3-radio-group">
             <p class="text-title mb-16">Тип пользователя</p>
               <div class="mb-16">
-                <input type="radio" @click="changeUserType" id="Individual" name="radio-group" checked>
+                <input type="radio" @click="changeUserType('individual')" id="Individual" name="radio-group" checked>
                 <label for="Individual">Физическое лицо</label>
               </div>
               <div>
-                <input type="radio" id="Entity" @click="changeUserType" name="radio-group">
+                <input type="radio" id="Entity" @click="changeUserType('entity')" name="radio-group">
                 <label for="Entity">Юридическое лицо, ИП</label>
               </div>
           </div>
@@ -232,8 +233,8 @@ export default {
       // window.localStorage.setItem('applications', JSON.stringify(dataArr));
     },
 
-    changeUserType(){
-      this.userIsEntity = this.userIsEntity === false;
+    changeUserType(type){
+      this.userIsEntity = type === 'entity';
     }
   },
 }

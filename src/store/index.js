@@ -13,7 +13,8 @@ export default createStore({
     },
     filteredMarkers: {},
     toRoute: {},
-    userRegion: '',
+    userRegion: {},
+    filteredRegions: {},
   },
 
   getters: {
@@ -23,6 +24,10 @@ export default createStore({
 
     filteredMarkers(state){
       return state.filteredMarkers;
+    },
+
+    filteredRegions(state){
+      return state.filteredRegions;
     },
 
     markers(state){
@@ -106,6 +111,17 @@ export default createStore({
     SET_USER_REGION(state, payload) {
       state.userRegion = payload;
     },
+
+    SET_SEARCH_REGION(state, word, search=true) {
+      if(search){
+        let word = filteredList();
+        function filteredList() {
+          return state.userRegion.filter((city) => city.city.toLowerCase().includes(word));
+        }
+      }
+
+      state.filteredRegions = word;
+    },
   },
 
   actions: {
@@ -118,6 +134,15 @@ export default createStore({
       });
     },
 
+    async initRegions(context){
+      await $.ajax({
+        url: '/db/regions.json'
+      }).done((data) => {
+        context.commit('SET_USER_REGION', data)
+        context.commit('SET_SEARCH_REGION', data)
+      });
+    },
+
     async initGeolocation(context){
       await ymaps.geolocation.get({ provider: 'auto', mapStateAutoApply: true }).then((res) => {
         context.commit('SET_GEOLOCATION', res.geoObjects.position)
@@ -125,7 +150,6 @@ export default createStore({
 
       context.commit("SET_MARKER_RANGE", this.state.markers);
     },
-
   },
 
   modules: {

@@ -67,7 +67,6 @@ export default {
         })
 
       if(this.selectedMarker.address !== 'Empty'){
-        console.log(this.selectedMarker.address);
         multiRoute = new ymaps.multiRouter.MultiRoute({
           referencePoints: [this.geolocation, this.selectedMarker.geometry.coordinates],
           params: { routingMode: 'pedestrian' } }, { boundsAutoApply: true });
